@@ -9,91 +9,14 @@
             font-family: Arial, sans-serif;
         }
         .color-set {
-            height: 100px;
-            margin: 10px;
-            display: inline-block;
-        }
-        header, footer {
-            padding: 20px;
-        }
-        p {
-            padding: 20px;
-    <button onclick="switchColorSet('set1')">Set 1</button>
-    <button onclick="switchColorSet('set2')">Set 2</button>
-    <button onclick="switchColorSet('set3')">Set 3</button>
-    <p id="content">This is a sample paragraph to demonstrate the color switcher functionality. The background color of
-this paragraph will change based on the selected color set.</p>
-
-    <div id="set1" class="color-set active">
-        <div class="color-box" style="background-color: red;"></div>
-        <div class="color-box" style="background-color: green;"></div>
-        <div class="color-box" style="background-color: blue;"></div>
-    </div>
-    <div id="set2" c00ss="color-set">
-        <div class="c0lor-box" style="background-color: yellow;"></div>
-        <div class="color-box" style="background-color: purple;"></div>
-        <div class="color-box" style="background-color: cyan;"></div>
-    </div>
-    <div id="set3" class="color-set">
-        <div class="color-box" style="background-color: orange;"></div>
-        <div class="color-box" style="background-color: pink;"></div>
-        <div class="color-box" style="background-color: brown;"></div>
-    </div>
-
-    <footer id="footer">Footer</footer>
-    <script>
-        function applyColors(colors) {
-            document.getElementById('header').style.backgroundColor = colors[0];
-            document.getElementById('content').style.backgroundColor = colors[1];
-            document.getElementById('footer').style.backgroundColor = colors[2];
-        }
-        function switchColorSet(setId) {
-            document.querySelectorAll('.color-set').forEach(set => {
-                set.classList.remove('active');
-            });
-            document.getElementById(setId).classList.add('active');
-            let colors;
-            switch (setId) {
-                case 'set1':
-                    colors = ['red', 'green', 'blue'];
-                    break;
-                case 'set2':
-                    colors = ['yellow', 'purple', 'cyan'];
-                    break;
-                case 'set3':
-                    colors = ['orange', 'pink', 'brown'];
-                    break;
-            }
-            applyColors(colors);
-        }
-    </script>
-</body>
-</html>
-ref="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" rel="stylesheet">1').style.backgroundColor = colors[3];   document.getElementById('extra2').style.backgroundColor = colors[4];mentById('extra3').style.backgroundColor = colors[5];mentById('extra4').style.backgroundColor = colors[6];   document.getElementById('extra5').style.backgroundColor = colors[7];.getElementById('extra6').style.backgroundColor = colors[8];lementById('extra7').style.backgroundColor = colors[9];ementById('header').style.backgroundColor = colors[0];lementById('content').style.backgroundColor = colors[1];d('footer').style.backgroundColor = colors[2];   document.getElementById('extra1').style.backgroundColor = colors[3];ElementById('extra2').style.backgroundColor = colors[4];ementById('extra3').style.backgroundColor = colors[5];ById('extra7').style.backgroundColor = colors[9];   document.getElementById('extra4').style.backgroundColor = colors[6]; document.getElementById('extra5').style.backgroundColor = colors[7];ementById('extra6').style.backgroundColor = colors[8];yId('extra1').style.backgroundColor = colors[3];   document.getElementById('extra2').style.backgroundColor = colors[4];document.getElementById('extra3').style.backgroundColor = colors[5];     document.getElementById('extra4').style.backgroundColor = colors[6];      document.getElementById('extra5').style.backgroundColor = colors[7];mentById('extra6').style.backgroundColor = colors[8];tra7').style.backgroundColor = colors[9]; colors[9];= colors[9]; colors[9];ors[9];            document.getElementById('extra3').style.color = colors[9];).style.color = colors[9];];;  document.getElementById('content').style.color = colors[9];footer').style.color = colors[9]; document.getElementById('extra4').style.color = colors[9];extra5').style.color = colors[9];
-            height: 100px;
-            margin: 10px;
-            display: inline-block;
-        }
-                        <img src="https://cdn3.iconfinder.com/data/icons/free-mix/128/business_office_seo_finance_work_coffee_pause_management-09-2-512.png" style="width: 150px; height: 150px;">
-
-            text-align: center;
-        }
-        p {
-            padding: 20px;
-            text-align: justify;
-        }
-        body {
-                        <img src="https://cdn3.iconfinder.com/data/icons/free-mix/128/business_office_seo_finance_work_coffee_pause_management-09-2-512.png" style="width: 150px; height: 150px;">
-
-        .color-set {
             display: none;
         }
         .color-set.active {
             display: block;
         }
         .color-box {
-                        <img src="https://cdn3.iconfinder.com/data/icons/free-mix/128/business_office_seo_finance_work_coffee_pause_management-09-2-512.png" style="width: 150px; height: 150px;">
-
+            width: 100px;
+            height: 100px;
             margin: 10px;
             display: inline-block;
         }
@@ -101,8 +24,8 @@ ref="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">=
             padding: 20px;
             text-align: center;
         }
-                        <img src="https://cdn3.iconfinder.com/data/icons/free-mix/128/business_office_seo_finance_work_coffee_pause_management-09-2-512.png" style="width: 150px; height: 150px;">
-
+        p {
+            padding: 20px;
             text-align: justify;
         }
     </style>
@@ -110,152 +33,42 @@ ref="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">=
 <body>
     <nav>
         <div class="nav-wrapper">
-                        <img src="https://cdn3.iconfinder.com/data/icons/free-mix/128/business_office_seo_finance_work_coffee_pause_management-09-2-512.png" style="width: 150px; height: 150px;">
-
+            <a href="#" class="brand-logo center">Color Switcher</a>
+        </div>
     </nav>
     <div class="container">
-        <h1 class="center-align">Color Switcher</h1>
-        <header id="header" class="card-panel teal lighten-2">Header</header>
+        <header id="header">Header</header>
         <div class="center-align">
-            <a class="waves-effect waves-light btn" onclick="switchColorSet('set1')">Set 1</a>
-            <a class="waves-effect waves-light btn" onclick="switchColorSet('set2')">Set 2</a>
-            <a class="waves-effect waves-light btn" onclick="switchColorSet('set3')">Set 3</a>
-            <a class="waves-effect waves-light btn" onclick="switchColorSet('set4')">Set 4</a>
-            <a class="waves-effect waves-light btn" onclick="switchColorSet('set5')">Set 5</a>
+            <button onclick="switchColorSet('set1')">Set 1</button>
+            <button onclick="switchColorSet('set2')">Set 2</button>
+            <button onclick="switchColorSet('set3')">Set 3</button>
         </div>
-        <p id="content" class="card-panel">This is a sample paragraph to demonstrate the color switcher functionality. The background color of this paragraph will change based on the selected color set.</p>
-        <div class="row">
-            <div class="col s12 m6 l4">
-                <div class="card">
-                    <div class="card-image">
-                        <img src="https://cdn3.iconfinder.com/data/icons/free-mix/128/business_office_seo_finance_work_coffee_pause_management-09-2-512.png" style="width: 150px; height: 150px;">
-                        <span class="card-title">Extra Box 1</span>
-                    </div>
-                    <div class="card-content" id="extra1"></div>
-                </div>
-            </div>
-            <div class="col s12 m6 l4">
-                <div class="card">
-                    <div class="card-image">
-                        <img src="https://cdn3.iconfinder.com/data/icons/free-mix/128/business_office_seo_finance_work_coffee_pause_management-09-2-512.png" style="width: 150px; height: 150px;">
-                        <span class="card-title">Extra Box 2</span>
-                    </div>
-                    <div class="card-content" id="extra2"></div>
-                </div>
-            </div>
-            <div class="col s12 m6 l4">
-                <div class="card">
-                    <div class="card-image">
-                        <img src="https://cdn3.iconfinder.com/data/icons/free-mix/128/business_office_seo_finance_work_coffee_pause_management-09-2-512.png" style="width: 150px; height: 150px;">
-                        <span class="card-title">Extra Box 3</span>
-                    </div>
-                    <div class="card-content" id="extra3"></div>
-                </div>
-            </div>
-            <div class="col s12 m6 l4">
-                <div class="card">
-                    <div class="card-image">
-                        <img src="https://cdn3.iconfinder.com/data/icons/free-mix/128/business_office_seo_finance_work_coffee_pause_management-09-2-512.png" style="width: 150px; height: 150px;">
-                        <span class="card-title">Extra Box 4</span>
-                    </div>
-                    <div class="card-content" id="extra4"></div>
-                </div>
-            </div>
-            <div class="col s12 m6 l4">
-                <div class="card">
-                    <div class="card-image">
-                        <img src="https://cdn3.iconfinder.com/data/icons/free-mix/128/business_office_seo_finance_work_coffee_pause_management-09-2-512.png" style="width: 150px; height: 150px;">
-                        <span class="card-title">Extra Box 5</span>
-                    </div>
-                    <div class="card-content" id="extra5"></div>
-                </div>
-            </div>
-            <div class="col s12 m6 l4">
-                <div class="card">
-                    <div class="card-image">
-                        <img src="https://cdn3.iconfinder.com/data/icons/free-mix/128/business_office_seo_finance_work_coffee_pause_management-09-2-512.png" style="width: 150px; height: 150px;">
-                        <span class="card-title">Extra Box 6</span>
-                    </div>
-                    <div class="card-content" id="extra6"></div>
-                </div>
-            </div>
+        <p id="content">This is a sample paragraph to demonstrate the color switcher functionality. The background color of this paragraph will change based on the selected color set.</p>
+        <div id="set1" class="color-set active">
+            <div class="color-box" style="background-color: red;"></div>
+            <div class="color-box" style="background-color: green;"></div>
+            <div class="color-box" style="background-color: blue;"></div>
         </div>
-
-    <div id="set1" class="color-set active">
-        <div class="color-box" style="background-color: #5e4b56;"></div>
-        <div class="color-box" style="background-color: #7e5878;"></div>
-        <div class="color-box" style="background-color: #9370db;"></div>
-        <div class="color-box" style="background-color: #9b8ca5;"></div>
-        <div class="color-box" style="background-color: #bca5c8;"></div>
-        <div class="color-box" style="background-color: #c19ac4;"></div>
-        <div class="color-box" style="background-color: #d4a5d2;"></div>
-        <div class="color-box" style="background-color: #cfa1e3;"></div>
-        <div class="color-box" style="background-color: #dccae3;"></div>
-        <div class="color-box" style="background-color: #f3e4f2;"></div>
+        <div id="set2" class="color-set">
+            <div class="color-box" style="background-color: yellow;"></div>
+            <div class="color-box" style="background-color: purple;"></div>
+            <div class="color-box" style="background-color: cyan;"></div>
+        </div>
+        <div id="set3" class="color-set">
+            <div class="color-box" style="background-color: orange;"></div>
+            <div class="color-box" style="background-color: pink;"></div>
+            <div class="color-box" style="background-color: brown;"></div>
+        </div>
+        <footer id="footer">Footer</footer>
     </div>
-    <div id="set2" class="color-set">
-        <div class="color-box" style="background-color: #2e2e2e;"></div>
-        <div class="color-box" style="background-color: #3c3c3c;"></div>
-        <div class="color-box" style="background-color: #4a4a4a;"></div>
-        <div class="color-box" style="background-color: #5e5e5e;"></div>
-        <div class="color-box" style="background-color: #6d6d6d;"></div>
-        <div class="color-box" style="background-color: #8a8a8a;"></div>
-        <div class="color-box" style="background-color: #a7a7a7;"></div>
-        <div class="color-box" style="background-color: #c3c3c3;"></div>
-        <div class="color-box" style="background-color: #e0e0e0;"></div>
-        <div class="color-box" style="background-color: #f5f5f5;"></div>
-    </div>
-    <div id="set3" class="color-set">
-        <div class="color-box" style="background-color: #ff9800;"></div>
-        <div class="color-box" style="background-color: #fb8c00;"></div>
-        <div class="color-box" style="background-color: #ffa726;"></div>
-        <div class="color-box" style="background-color: #ffb74d;"></div>
-        <div class="color-box" style="background-color: #ffb74d;"></div>
-        <div class="color-box" style="background-color: #ffcc80;"></div>
-        <div class="color-box" style="background-color: #ffe0b2;"></div>
-        <div class="color-box" style="background-color: #ffebcc;"></div>
-        <div class="color-box" style="background-color: #fff3e0;"></div>
-        <div class="color-box" style="background-color: #ef6c00;"></div>
-    </div>
-    <div id="set4" class="color-set">
-        <div class="color-box" style="background-color: #1d3557;"></div>
-        <div class="color-box" style="background-color: #2c3e50;"></div>
-        <div class="color-box" style="background-color: #264653;"></div>
-        <div class="color-box" style="background-color: #457b9d;"></div>
-        <div class="color-box" style="background-color: #2a9d8f;"></div>
-        <div class="color-box" style="background-color: #a8dadc;"></div>
-        <div class="color-box" style="background-color: #f1faee;"></div>
-        <div class="color-box" style="background-color: #e9c46a;"></div>
-        <div class="color-box" style="background-color: #f4a261;"></div>
-        <div class="color-box" style="background-color: #e76f51;"></div>
-    </div>
-    <div id="set5" class="color-set">
-        <div class="color-box" style="background-color: #4B0082;"></div>
-        <div class="color-box" style="background-color: #8A2BE2;"></div>
-        <div class="color-box" style="background-color: #9932CC;"></div>
-        <div class="color-box" style="background-color: #9370DB;"></div>
-        <div class="color-box" style="background-color: #BA55D3;"></div>
-        <div class="color-box" style="background-color: #C71585;"></div>
-        <div class="color-box" style="background-color: #DA70D6;"></div>
-        <div class="color-box" style="background-color: #DB7093;"></div>
-        <div class="color-box" style="background-color: #DDA0DD;"></div>
-        <div class="color-box" style="background-color: #EE82EE;"></div>
-    </div>
-
-        <footer id="footer" class="card-panel teal lighten-2">Footer</footer>
-    </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script>
         function applyColors(colors) {
             document.getElementById('header').style.backgroundColor = colors[0];
             document.getElementById('content').style.backgroundColor = colors[1];
             document.getElementById('footer').style.backgroundColor = colors[2];
-            document.getElementById('extra1').style.backgroundColor = colors[3];
-            document.getElementById('extra2').style.backgroundColor = colors[4];
-            document.getElementById('extra3').style.backgroundColor = colors[5];
-            document.getElementById('extra4').style.backgroundColor = colors[6];
-            document.getElementById('extra5').style.backgroundColor = colors[7];
-            document.getElementById('extra6').style.backgroundColor = colors[8];
+            document.getElementById('header').style.color = colors[3];
+            document.getElementById('content').style.color = colors[3];
+            document.getElementById('footer').style.color = colors[3];
         }
         function switchColorSet(setId) {
             document.querySelectorAll('.color-set').forEach(set => {
@@ -265,19 +78,13 @@ ref="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">=
             let colors;
             switch (setId) {
                 case 'set1':
-                    colors = ['#5e4b56', '#7e5878', '#9370db', '#9b8ca5', '#bca5c8', '#c19ac4', '#d4a5d2', '#cfa1e3', '#dccae3', '#f3e4f2', '#ffffff'];
+                    colors = ['red', 'green', 'blue', 'white'];
                     break;
                 case 'set2':
-                    colors = ['#2e2e2e', '#3c3c3c', '#4a4a4a', '#5e5e5e', '#6d6d6d', '#8a8a8a', '#a7a7a7', '#c3c3c3', '#e0e0e0', '#f5f5f5', '#ffffff'];
+                    colors = ['yellow', 'purple', 'cyan', 'black'];
                     break;
                 case 'set3':
-                    colors = ['#ff9800', '#fb8c00', '#ffa726', '#ffb74d', '#ffb74d', '#ffcc80', '#ffe0b2', '#ffebcc', '#fff3e0', '#ef6c00', '#000000'];
-                    break;
-                case 'set4':
-                    colors = ['#1d3557', '#2c3e50', '#264653', '#457b9d', '#2a9d8f', '#a8dadc', '#f1faee', '#e9c46a', '#f4a261', '#e76f51', '#ffffff'];
-                    break;
-                case 'set5':
-                    colors = ['#4B0082', '#8A2BE2', '#9932CC', '#9370DB', '#BA55D3', '#C71585', '#DA70D6', '#DB7093', '#DDA0DD', '#EE82EE', '#ffffff'];
+                    colors = ['orange', 'pink', 'brown', 'white'];
                     break;
             }
             applyColors(colors);
