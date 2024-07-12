@@ -4,78 +4,78 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Color Switcher</title>
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" rel="stylesheet">
     <style>
-        .extra-box {
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .color-set {
+            height: 100px;
             margin: 10px;
+            display: inline-block;
+        }
+        header, footer {
+            padding: 20px;
+        }
+        p {
+            padding: 20px;
+    <button onclick="switchColorSet('set1')">Set 1</button>
+    <button onclick="switchColorSet('set2')">Set 2</button>
+    <button onclick="switchColorSet('set3')">Set 3</button>
+    <p id="content">This is a sample paragraph to demonstrate the color switcher functionality. The background color of
+this paragraph will change based on the selected color set.</p>
+
+    <div id="set1" class="color-set active">
+        <div class="color-box" style="background-color: red;"></div>
+        <div class="color-box" style="background-color: green;"></div>
+        <div class="color-box" style="background-color: blue;"></div>
+    </div>
+    <div id="set2" c00ss="color-set">
+        <div class="c0lor-box" style="background-color: yellow;"></div>
+        <div class="color-box" style="background-color: purple;"></div>
+        <div class="color-box" style="background-color: cyan;"></div>
+    </div>
+    <div id="set3" class="color-set">
+        <div class="color-box" style="background-color: orange;"></div>
+        <div class="color-box" style="background-color: pink;"></div>
+        <div class="color-box" style="background-color: brown;"></div>
+    </div>
+
+    <footer id="footer">Footer</footer>
+    <script>
+        function applyColors(colors) {
             document.getElementById('header').style.backgroundColor = colors[0];
             document.getElementById('content').style.backgroundColor = colors[1];
             document.getElementById('footer').style.backgroundColor = colors[2];
-            document.getElementById('extra1').style.backgroundColor = colors[3];
-            document.getElementById('extra2').style.backgroundColor = colors[4];
-            document.getElementById('extra3').style.backgroundColor = colors[5];
-            document.getElementById('extra4').style.backgroundColor = colors[6];
-            document.getElementById('extra5').style.backgroundColor = colors[7];
-            document.getElementById('extra6').style.backgroundColor = colors[8];
-            document.getElementById('header').style.color = colors[9];
-            document.getElementById('content').style.color = colors[9];
-            document.getElementById('footer').style.color = colors[9];
-            document.getElementById('extra1').style.color = colors[9];
-            document.getElementById('extra2').style.color = colors[9];
-            document.getElementById('extra3').style.color = colors[9];
-            document.getElementById('extra4').style.color = colors[9];
-            document.getElementById('extra5').style.color = colors[9];
-            document.getElementById('extra6').style.color = colors[9];
-            document.getElementById('header').style.color = colors[9];
-            document.getElementById('content').style.color = colors[9];
-            document.getElementById('footer').style.color = colors[9];
-            document.getElementById('extra1').style.color = colors[9];
-            document.getElementById('extra2').style.color = colors[9];
-            document.getElementById('extra3').style.color = colors[9];
-            document.getElementById('extra4').style.color = colors[9];
-            document.getElementById('extra5').style.color = colors[9];
-            document.getElementById('extra6').style.color = colors[9];
-        body {
-            font-family: Arial, sans-serif;
         }
-        body {
-            font-family: Arial, sans-serif;
+        function switchColorSet(setId) {
+            document.querySelectorAll('.color-set').forEach(set => {
+                set.classList.remove('active');
+            });
+            document.getElementById(setId).classList.add('active');
+            let colors;
+            switch (setId) {
+                case 'set1':
+                    colors = ['red', 'green', 'blue'];
+                    break;
+                case 'set2':
+                    colors = ['yellow', 'purple', 'cyan'];
+                    break;
+                case 'set3':
+                    colors = ['orange', 'pink', 'brown'];
+                    break;
+            }
+            applyColors(colors);
         }
-        .color-set {
-            display: none;
-        }
-        .color-set.active {
-            display: block;
-        }
-        .color-box {
-            width: 100px;
+    </script>
+</body>
+</html>
+ref="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" rel="stylesheet">1').style.backgroundColor = colors[3];   document.getElementById('extra2').style.backgroundColor = colors[4];mentById('extra3').style.backgroundColor = colors[5];mentById('extra4').style.backgroundColor = colors[6];   document.getElementById('extra5').style.backgroundColor = colors[7];.getElementById('extra6').style.backgroundColor = colors[8];lementById('extra7').style.backgroundColor = colors[9];ementById('header').style.backgroundColor = colors[0];lementById('content').style.backgroundColor = colors[1];d('footer').style.backgroundColor = colors[2];   document.getElementById('extra1').style.backgroundColor = colors[3];ElementById('extra2').style.backgroundColor = colors[4];ementById('extra3').style.backgroundColor = colors[5];ById('extra7').style.backgroundColor = colors[9];   document.getElementById('extra4').style.backgroundColor = colors[6]; document.getElementById('extra5').style.backgroundColor = colors[7];ementById('extra6').style.backgroundColor = colors[8];yId('extra1').style.backgroundColor = colors[3];   document.getElementById('extra2').style.backgroundColor = colors[4];document.getElementById('extra3').style.backgroundColor = colors[5];     document.getElementById('extra4').style.backgroundColor = colors[6];      document.getElementById('extra5').style.backgroundColor = colors[7];mentById('extra6').style.backgroundColor = colors[8];tra7').style.backgroundColor = colors[9]; colors[9];= colors[9]; colors[9];ors[9];            document.getElementById('extra3').style.color = colors[9];).style.color = colors[9];];;  document.getElementById('content').style.color = colors[9];footer').style.color = colors[9]; document.getElementById('extra4').style.color = colors[9];extra5').style.color = colors[9];
             height: 100px;
             margin: 10px;
             display: inline-block;
         }
-        header, footer, .extra-box {
-            padding: 20px;
-            text-align: center;
-        }
-        p {
-            padding: 20px;
-            text-align: justify;
-        }
-        .color-set {
-            display: none;
-        }
-        .color-set.active {
-            display: block;
-        }
-        .color-box {
-            width: 100px;
-            height: 100px;
-            margin: 10px;
-            display: inline-block;
-        }
-        header, footer, .extra-box {
-            padding: 20px;
+                        <img src="https://cdn3.iconfinder.com/data/icons/free-mix/128/business_office_seo_finance_work_coffee_pause_management-09-2-512.png" style="width: 150px; height: 150px;">
+
             text-align: center;
         }
         p {
@@ -83,8 +83,8 @@
             text-align: justify;
         }
         body {
-            font-family: Arial, sans-serif;
-        }
+                        <img src="https://cdn3.iconfinder.com/data/icons/free-mix/128/business_office_seo_finance_work_coffee_pause_management-09-2-512.png" style="width: 150px; height: 150px;">
+
         .color-set {
             display: none;
         }
@@ -92,8 +92,8 @@
             display: block;
         }
         .color-box {
-            width: 100px;
-            height: 100px;
+                        <img src="https://cdn3.iconfinder.com/data/icons/free-mix/128/business_office_seo_finance_work_coffee_pause_management-09-2-512.png" style="width: 150px; height: 150px;">
+
             margin: 10px;
             display: inline-block;
         }
@@ -101,8 +101,8 @@
             padding: 20px;
             text-align: center;
         }
-        p {
-            padding: 20px;
+                        <img src="https://cdn3.iconfinder.com/data/icons/free-mix/128/business_office_seo_finance_work_coffee_pause_management-09-2-512.png" style="width: 150px; height: 150px;">
+
             text-align: justify;
         }
     </style>
@@ -110,8 +110,8 @@
 <body>
     <nav>
         <div class="nav-wrapper">
-            <a href="#" class="brand-logo center">Color Switcher</a>
-        </div>
+                        <img src="https://cdn3.iconfinder.com/data/icons/free-mix/128/business_office_seo_finance_work_coffee_pause_management-09-2-512.png" style="width: 150px; height: 150px;">
+
     </nav>
     <div class="container">
         <h1 class="center-align">Color Switcher</h1>
