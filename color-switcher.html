@@ -7,21 +7,9 @@
     <style>
         body {
             font-family: Arial, sans-serif;
+        }
         .color-set {
             display: none;
-            let colors;
-            switch (setId) {
-                case 'set1':
-                    colors = ['red', 'green', 'blue'];
-                    break;
-                case 'set2':
-                    colors = ['yellow', 'purple', 'cyan'];
-                    break;
-                case 'set3':
-                    colors = ['orange', 'pink', 'brown'];
-                    break;
-            }
-            applyColors(colors);
         }
         .color-set.active {
             display: block;
@@ -40,6 +28,7 @@
             padding: 20px;
             text-align: justify;
         }
+    </style>
 </head>
 <body>
     <h1>Color Switcher</h1>
@@ -47,7 +36,8 @@
     <button onclick="switchColorSet('set1')">Set 1</button>
     <button onclick="switchColorSet('set2')">Set 2</button>
     <button onclick="switchColorSet('set3')">Set 3</button>
-    <p id="content">This is a sample paragraph to demonstrate the color switcher functionality. The background color of this paragraph will change based on the selected color set.</p>
+    <p id="content">This is a sample paragraph to demonstrate the color switcher functionality. The background color of
+this paragraph will change based on the selected color set.</p>
 
     <div id="set1" class="color-set active">
         <div class="color-box" style="background-color: red;"></div>
@@ -77,6 +67,19 @@
                 set.classList.remove('active');
             });
             document.getElementById(setId).classList.add('active');
+            let colors;
+            switch (setId) {
+                case 'set1':
+                    colors = ['red', 'green', 'blue'];
+                    break;
+                case 'set2':
+                    colors = ['yellow', 'purple', 'cyan'];
+                    break;
+                case 'set3':
+                    colors = ['orange', 'pink', 'brown'];
+                    break;
+            }
+            applyColors(colors);
         }
     </script>
 </body>
