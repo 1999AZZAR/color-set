@@ -14,11 +14,11 @@ This project displays a collection of color sets, each containing ten colors. Us
 
 1. **Clone the repository:**
    ```sh
-   git clone https://github.com/your-username/color-sets-project.git
+   git clone https://github.com/1999AZZAR/color-set.git
    ```
 2. **Navigate to the project directory:**
    ```sh
-   cd color-sets-project
+   cd color-set
    ```
 
 ## Usage
