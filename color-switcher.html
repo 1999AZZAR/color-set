@@ -9,30 +9,6 @@
     <style>
         .extra-box {
             margin: 10px;
-            document.getElementById('extra1').style.backgroundColor = colors[3];
-            document.getElementById('extra2').style.backgroundColor = colors[4];
-            document.getElementById('extra3').style.backgroundColor = colors[5];
-            document.getElementById('extra4').style.backgroundColor = colors[6];
-            document.getElementById('extra5').style.backgroundColor = colors[7];
-            document.getElementById('extra6').style.backgroundColor = colors[8];
-            document.getElementById('header').style.color = colors[9];
-            document.getElementById('content').style.color = colors[9];
-            document.getElementById('footer').style.color = colors[9];
-            document.getElementById('extra1').style.color = colors[9];
-            document.getElementById('extra2').style.color = colors[9];
-            document.getElementById('extra3').style.color = colors[9];
-            document.getElementById('extra4').style.color = colors[9];
-            document.getElementById('extra5').style.color = colors[9];
-            document.getElementById('extra6').style.color = colors[9];
-            document.getElementById('header').style.color = colors[9];
-            document.getElementById('content').style.color = colors[9];
-            document.getElementById('footer').style.color = colors[9];
-            document.getElementById('extra1').style.color = colors[9];
-            document.getElementById('extra2').style.color = colors[9];
-            document.getElementById('extra3').style.color = colors[9];
-            document.getElementById('extra4').style.color = colors[9];
-            document.getElementById('extra5').style.color = colors[9];
-            document.getElementById('extra6').style.color = colors[9];
             document.getElementById('header').style.backgroundColor = colors[0];
             document.getElementById('content').style.backgroundColor = colors[1];
             document.getElementById('footer').style.backgroundColor = colors[2];
@@ -42,6 +18,37 @@
             document.getElementById('extra4').style.backgroundColor = colors[6];
             document.getElementById('extra5').style.backgroundColor = colors[7];
             document.getElementById('extra6').style.backgroundColor = colors[8];
+            document.getElementById('header').style.color = colors[9];
+            document.getElementById('content').style.color = colors[9];
+            document.getElementById('footer').style.color = colors[9];
+            document.getElementById('extra1').style.color = colors[9];
+            document.getElementById('extra2').style.color = colors[9];
+            document.getElementById('extra3').style.color = colors[9];
+            document.getElementById('extra4').style.color = colors[9];
+            document.getElementById('extra5').style.color = colors[9];
+            document.getElementById('extra6').style.color = colors[9];
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .color-set {
+            display: none;
+        }
+        .color-set.active {
+            display: block;
+        }
+        .color-box {
+            width: 100px;
+            height: 100px;
+            margin: 10px;
+            display: inline-block;
+        }
+        header, footer, .extra-box {
+            padding: 20px;
+            text-align: center;
+        }
+        p {
+            padding: 20px;
+            text-align: justify;
         }
         body {
             font-family: Arial, sans-serif;
