@@ -207,3 +207,52 @@
     </script>
 </body>
 </html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Color Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .color-box {
+            width: 100px;
+            height: 100px;
+            margin: 10px;
+            display: inline-block;
+        }
+        header, footer, .extra-box {
+            padding: 20px;
+            text-align: center;
+        }
+        p {
+            padding: 20px;
+            text-align: justify;
+        }
+    </style>
+</head>
+<body>
+    <header id="header">Header</header>
+    <div class="center-align">
+        <button onclick="applyTestColors()">Apply Test Colors</button>
+    </div>
+    <p id="content">This is a sample paragraph to demonstrate the color test functionality. The background color of this paragraph will change based on the applied test colors.</p>
+    <div class="color-box" style="background-color: red;"></div>
+    <div class="color-box" style="background-color: green;"></div>
+    <div class="color-box" style="background-color: blue;"></div>
+    <footer id="footer">Footer</footer>
+    <script>
+        function applyTestColors() {
+            const colors = ['red', 'green', 'blue', 'white'];
+            document.getElementById('header').style.backgroundColor = colors[0];
+            document.getElementById('content').style.backgroundColor = colors[1];
+            document.getElementById('footer').style.backgroundColor = colors[2];
+            document.getElementById('header').style.color = colors[3];
+            document.getElementById('content').style.color = colors[3];
+            document.getElementById('footer').style.color = colors[3];
+        }
+    </script>
+</body>
+</html>
