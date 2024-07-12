@@ -29,7 +29,7 @@
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            margin-bottom: 40px;
+            margin-bottom: 20px;
         }
         .color-box {
             width: 120px;
@@ -50,19 +50,27 @@
             box-shadow: 0 8px 10px rgba(0, 0, 0, 0.2);
         }
         .pagination {
-            margin-top: 20px;
             display: flex;
-            justify-content: center;
+            max-width: 25rem;
+            overflow-x: scroll;
+            margin: 1rem 1rem 2rem 1rem;
+            border-radius: 5px;
         }
         .pagination button {
+            display: flex;
             margin: 0 5px;
-            padding: 10px 20px;
+            padding: 15px 25px;
             border: none;
             border-radius: 5px;
             background-color: #333;
             color: white;
             cursor: pointer;
             transition: background-color 0.3s;
+        }
+        .pagination button img {
+            width: 20px;
+            height: 20px;
+            margin-right: 5px;
         }
         .pagination button:hover {
             background-color: #555;
@@ -209,18 +217,66 @@
 
             // Sunset Gradient
             set96: ['#FF6B6B', '#FFA06B', '#FFDAB9', '#FFE4B5', '#FFEFD5', '#FFF0F5', '#FFE4E1', '#FFC0CB', '#FFB6C1', '#FF69B4'],
+            set97: ['#FF7F7F', '#FFA07A', '#FFD7D7', '#FFEFD5', '#FFF5EE', '#FFF8DC', '#FFFACD', '#FFFAF0', '#FFFAFA', '#FFF5EE'],
+            set98: ['#FF8C8C', '#FFA07A', '#FFD7D7', '#FFE4B5', '#FFF0F5', '#FFF5EE', '#FFF8DC', '#FFFAF0', '#FFFAFA', '#FFF5EE'],
+            set99: ['#FF9C9C', '#FFA07A', '#FFDAB9', '#FFE4B5', '#FFEFD5', '#FFF0F5', '#FFE4E1', '#FFC0CB', '#FFB6C1', '#FF69B4'],
+            set100: ['#FFA6A6', '#FFA07A', '#FFDAB9', '#FFE4B5', '#FFEFD5', '#FFF0F5', '#FFE4E1', '#FFC0CB', '#FFB6C1', '#FF69B4'],
 
             // Ocean Depths
-            set97: ['#000080', '#191970', '#0000CD', '#0000FF', '#1E90FF', '#00BFFF', '#87CEFA', '#ADD8E6', '#B0E0E6', '#E0FFFF'],
+            set101: ['#000080', '#191970', '#0000CD', '#0000FF', '#1E90FF', '#00BFFF', '#87CEFA', '#ADD8E6', '#B0E0E6', '#E0FFFF'],
+            set102: ['#00008B', '#191970', '#0000CD', '#0000FF', '#1E90FF', '#00BFFF', '#87CEFA', '#ADD8E6', '#B0E0E6', '#E0FFFF'],
+            set103: ['#0000A0', '#191970', '#0000CD', '#0000FF', '#1E90FF', '#00BFFF', '#87CEFA', '#ADD8E6', '#B0E0E6', '#E0FFFF'],
+            set104: ['#0000B5', '#191970', '#0000CD', '#0000FF', '#1E90FF', '#00BFFF', '#87CEFA', '#ADD8E6', '#B0E0E6', '#E0FFFF'],
+            set105: ['#0000CA', '#191970', '#0000CD', '#0000FF', '#1E90FF', '#00BFFF', '#87CEFA', '#ADD8E6', '#B0E0E6', '#E0FFFF'],
 
             // Forest Tones
-            set98: ['#006400', '#228B22', '#32CD32', '#3CB371', '#66CDAA', '#8FBC8F', '#98FB98', '#90EE90', '#ADFF2F', '#7CFC00'],
+            set106: ['#4B2E2E', '#654321', '#855E42', '#8B4513', '#556B2F', '#6B8E23', '#228B22', '#32CD32', '#98FB98', '#ADFF2F'],
+            set107: ['#3B1F1F', '#5B3A3A', '#7B5A5A', '#9B7A7A', '#556B2F', '#6B8E23', '#228B22', '#32CD32', '#98FB98', '#ADFF2F'],
+            set108: ['#4B2E2E', '#654321', '#7B4E4E', '#8B5E5E', '#556B2F', '#6B8E23', '#228B22', '#32CD32', '#98FB98', '#ADFF2F'],
+            set109: ['#4B3E3E', '#654F4F', '#856060', '#8B7B7B', '#556B2F', '#6B8E23', '#228B22', '#32CD32', '#98FB98', '#ADFF2F'],
+            set110: ['#4B4E4E', '#656F6F', '#857080', '#8B7B8B', '#556B2F', '#6B8E23', '#228B22', '#32CD32', '#98FB98', '#ADFF2F'],
 
             // Autumn Leaves
-            set99: ['#8B4513', '#A0522D', '#CD853F', '#DEB887', '#D2691E', '#FF7F50', '#FF6347', '#FF4500', '#FFA500', '#FFD700'],
+            set111: ['#8B4513', '#A0522D', '#CD853F', '#DEB887', '#D2691E', '#FF7F50', '#FF6347', '#FF4500', '#FFA500', '#FFD700'],
+            set112: ['#7A3812', '#8F4D2C', '#AF7041', '#C69564', '#AC6A1C', '#E66839', '#DC5533', '#D33F1F', '#E99500', '#E8BF40'],
+            set113: ['#6A3210', '#83482A', '#A4663D', '#B47D52', '#9B5E1A', '#CF5F32', '#C4532E', '#B73C1D', '#CC8300', '#CCB838'],
+            set114: ['#5A2B0E', '#774223', '#94733F', '#A47C4A', '#8A5417', '#BA5630', '#AD482A', '#A2331B', '#BB7100', '#BBA738'],
+            set115: ['#4A240C', '#66401C', '#845A32', '#917044', '#754514', '#A84B2E', '#9C4228', '#8C2A1A', '#AA6100', '#AA9738'],
 
             // Cosmic Purple
-            set100: ['#4B0082', '#663399', '#8A2BE2', '#9370DB', '#BA55D3', '#DA70D6', '#EE82EE', '#DDA0DD', '#D8BFD8', '#E6E6FA']
+            set116: ['#4B0082', '#663399', '#8A2BE2', '#9370DB', '#BA55D3', '#DA70D6', '#EE82EE', '#DDA0DD', '#D8BFD8', '#E6E6FA'],
+            set117: ['#3B0070', '#57308B', '#7631BF', '#8569C7', '#A348B1', '#C160BD', '#E075DD', '#C47ACC', '#C1A3C9', '#CFC2DF'],
+            set118: ['#2B005E', '#473077', '#623193', '#7370A4', '#8D409F', '#A650A4', '#C068C6', '#B477B4', '#A67DB7', '#B0A9CC'],
+            set119: ['#1B004C', '#373065', '#4F3181', '#5F70A1', '#7D3F8D', '#8E50A7', '#AF68B4', '#A27BA3', '#92B3B5', '#9DA0BB'],
+            set120: ['#0B003A', '#273053', '#3F3180', '#4F70A0', '#6D3F8A', '#7E50A3', '#9F68B2', '#977BA0', '#83A3AD', '#8A8BA8'],
+
+            // Saturn
+            set121: ['#3B3A30', '#5C5947', '#7D7A5F', '#9E9A77', '#BFB98F', '#E0D9A7', '#F3E9B7', '#FFF5C7', '#FFFAE7', '#FFFFF5'],
+            set122: ['#4B4633', '#6C6C56', '#8D8D79', '#AEAE9B', '#CFCEA0', '#EFEFA5', '#F4F4BA', '#F9F9CF', '#FCFCE4', '#FFFFF2'],
+            set123: ['#514B38', '#716D5C', '#919E80', '#B1BFA4', '#D1E0C8', '#F1F1D2', '#F5F5D8', '#F9F9DE', '#FCFCE4', '#FFFFF2'],
+            set124: ['#5B5540', '#7C7866', '#9D9D8C', '#BEBEB2', '#DFDFC9', '#EFEFC0', '#F3F3C5', '#F7F7CA', '#FAFACF', '#FFFFF5'],
+            set125: ['#665F48', '#878C6E', '#A9A993', '#CBC8B8', '#EDEDD5', '#EDEDC8', '#F1F1CD', '#F5F5D2', '#F9F9D7', '#FFFFF5'],
+
+            // Jupiter
+            set126: ['#362C28', '#5A4A43', '#7E6861', '#A2867F', '#C6A49D', '#EAC2BB', '#F4D4CA', '#FDE6D9', '#FCEAE3', '#FFF6F2'],
+            set127: ['#4A3A32', '#6E5850', '#92676E', '#B6858C', '#D9A3AA', '#FDC1C8', '#FDE1DD', '#FFF1ED', '#FFF7F3', '#FFFDF9'],
+            set128: ['#3E3029', '#624E46', '#865D63', '#AA7B81', '#CE99A0', '#F2B7BF', '#F4CFD5', '#F7E7EB', '#FAF7F1', '#FFFDF9'],
+            set129: ['#513C33', '#735A51', '#97696F', '#BA878D', '#DDA5AB', '#FFC3C9', '#FFE1E0', '#FFF0F2', '#FFF6F8', '#FFFEFD'],
+            set130: ['#5B463C', '#7D625D', '#A0807F', '#C39E9E', '#E6BDBD', '#FFE6E6', '#FFF1F1', '#FFF8F8', '#FFFDFD', '#FFFFFF'],
+
+            // Neptune
+            set131: ['#000033', '#000066', '#000099', '#0000CC', '#0000FF', '#3333FF', '#6666FF', '#9999FF', '#CCCCFF', '#E5E5FF'],
+            set132: ['#000035', '#000068', '#00009B', '#0000CE', '#0000FF', '#3434FF', '#6767FF', '#9A9AFF', '#CDCDFF', '#E6E6FF'],
+            set133: ['#000037', '#00006A', '#00009D', '#0000D0', '#0000FF', '#3535FF', '#6868FF', '#9B9BFF', '#CECEFF', '#E7E7FF'],
+            set134: ['#000039', '#00006C', '#00009F', '#0000D2', '#0000FF', '#3636FF', '#6969FF', '#9C9CFF', '#CFCFFF', '#E8E8FF'],
+            set135: ['#00003B', '#00006E', '#0000A1', '#0000D4', '#0000FF', '#3737FF', '#6A6AFF', '#9D9DFF', '#D0D0FF', '#E9E9FF'],
+
+            // Sun
+            set136: ['#FF4500', '#FF6347', '#FF7F50', '#FF8C00', '#FFA500', '#FFB347', '#FFCC66', '#FFD700', '#FFEC8B', '#FFFACD'],
+            set137: ['#FF4000', '#FF6047', '#FF7C50', '#FF8900', '#FF9F00', '#FFB247', '#FFCC66', '#FFD500', '#FFEB8B', '#FFF8CD'],
+            set138: ['#FF3B00', '#FF5B47', '#FF7750', '#FF8400', '#FF9A00', '#FFAD47', '#FFC766', '#FFD000', '#FFE88B', '#FFF6CD'],
+            set139: ['#FF3600', '#FF5647', '#FF7250', '#FF7F00', '#FF9500', '#FFA847', '#FFC066', '#FFCA00', '#FFE48B', '#FFF4CD'],
+            set140: ['#FF3100', '#FF5147', '#FF6D50', '#FF7A00', '#FF9000', '#FFA347', '#FFBD66', '#FFC400', '#FFE08B', '#FFF2CD']
         };
 
         let currentPage = 1;
@@ -290,6 +346,7 @@
                 if (i === page) {
                     button.style.backgroundColor = '#555';
                 }
+                button.innerHTML = `<img src="page.png" alt="Icon">${i}`;
                 button.addEventListener('click', () => {
                     currentPage = i;
                     displaySets(currentPage);
