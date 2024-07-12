@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Color Switcher</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .color-set {
+            display: none;
+        }
+        .color-set.active {
+            display: block;
+        }
+        .color-box {
+            width: 100px;
+            height: 100px;
+            margin: 10px;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+    <h1>Color Switcher</h1>
+    <button onclick="switchColorSet('set1')">Set 1</button>
+    <button onclick="switchColorSet('set2')">Set 2</button>
+    <button onclick="switchColorSet('set3')">Set 3</button>
+
+    <div id="set1" class="color-set active">
+        <div class="color-box" style="background-color: red;"></div>
+        <div class="color-box" style="background-color: green;"></div>
+        <div class="color-box" style="background-color: blue;"></div>
+    </div>
+    <div id="set2" class="color-set">
+        <div class="color-box" style="background-color: yellow;"></div>
+        <div class="color-box" style="background-color: purple;"></div>
+        <div class="color-box" style="background-color: cyan;"></div>
+    </div>
+    <div id="set3" class="color-set">
+        <div class="color-box" style="background-color: orange;"></div>
+        <div class="color-box" style="background-color: pink;"></div>
+        <div class="color-box" style="background-color: brown;"></div>
+    </div>
+
+    <script>
+        function switchColorSet(setId) {
+            document.querySelectorAll('.color-set').forEach(set => {
+                set.classList.remove('active');
+            });
+            document.getElementById(setId).classList.add('active');
+        }
+    </script>
+</body>
+</html>
