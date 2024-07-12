@@ -76,56 +76,151 @@
 
     <script>
         const colorSets = {
-            set1: ['#5e4b56', '#7e5878', '#9370db', '#9b8ca5', '#bca5c8', '#c19ac4', '#d4a5d2', '#cfa1e3', '#dccae3', '#f3e4f2'],
-            set2: ['#2e2e2e', '#3c3c3c', '#4a4a4a', '#5e5e5e', '#6d6d6d', '#8a8a8a', '#a7a7a7', '#c3c3c3', '#e0e0e0', '#f5f5f5'],
-            set3: ['#ff9800', '#fb8c00', '#ffa726', '#ffb74d', '#ffb74d', '#ffcc80', '#ffe0b2', '#ffebcc', '#fff3e0', '#ef6c00'],
-            set4: ['#1d3557', '#2c3e50', '#264653', '#457b9d', '#2a9d8f', '#a8dadc', '#f1faee', '#e9c46a', '#f4a261', '#e76f51'],
-            set5: ['#4B0082', '#8A2BE2', '#9932CC', '#9370DB', '#BA55D3', '#C71585', '#DA70D6', '#DB7093', '#DDA0DD', '#EE82EE'],
-            set6: ['#2F4F4F', '#556B2F', '#5F9EA0', '#4682B4', '#20B2AA', '#778899', '#8FBC8F', '#B0C4DE', '#ADD8E6', '#87CEFA'],
-            set7: ['#8B4513', '#A0522D', '#D2691E', '#CD853F', '#F4A460', '#DEB887', '#D2B48C', '#FFDEAD', '#FFE4C4', '#FFF8DC'],
-            set8: ['#556B2F', '#6B8E23', '#8FBC8F', '#32CD32', '#00FF7F', '#ADFF2F', '#7FFF00', '#7CFC00', '#98FB98', '#90EE90'],
-            set9: ['#800000', '#B22222', '#DC143C', '#FF4500', '#FF6347', '#FF7F50', '#FF8C00', '#E9967A', '#FA8072', '#FFA07A'],
-            set10: ['#191970', '#000080', '#00008B', '#0000CD', '#4169E1', '#4682B4', '#6495ED', '#87CEFA', '#87CEEB', '#B0E0E6'],
-            set11: ['#000000', '#1a1a1a', '#333333', '#4d4d4d', '#666666', '#808080', '#999999', '#b3b3b3', '#cccccc', '#e6e6e6'],
-            set12: ['#3b3b3b', '#595959', '#737373', '#8c8c8c', '#a6a6a6', '#bfbfbf', '#d9d9d9', '#f2f2f2', '#7f7f7f', '#999999'],
-            set13: ['#ff0000', '#ff3333', '#ff6666', '#ff9999', '#ffcccc', '#ffb3b3', '#ff8080', '#ff4d4d', '#ff1a1a', '#e60000'],
-            set14: ['#004d00', '#007300', '#009900', '#00bf00', '#00e600', '#33cc33', '#66ff66', '#80ff80', '#99ff99', '#b3ffb3'],
-            set15: ['#000033', '#000066', '#000099', '#0000cc', '#0000ff', '#3333ff', '#6666ff', '#9999ff', '#ccccff', '#e6e6ff'],
-            set16: ['#8B0000', '#A52A2A', '#B22222', '#CD5C5C', '#DC143C', '#FF0000', '#FF4500', '#FF6347', '#FF7F50', '#FFA07A'],
-            set17: ['#006400', '#008000', '#228B22', '#32CD32', '#3CB371', '#66CDAA', '#8FBC8F', '#90EE90', '#98FB98', '#00FF7F'],
-            set18: ['#00008B', '#0000CD', '#0000FF', '#1E90FF', '#4169E1', '#6495ED', '#7B68EE', '#4682B4', '#87CEEB', '#87CEFA'],
-            set19: ['#8B4513', '#A0522D', '#CD853F', '#D2691E', '#DEB887', '#F4A460', '#FFDAB9', '#FFE4B5', '#FFEFD5', '#FFF8DC'],
-            set20: ['#2F4F4F', '#3D5A5A', '#4B6666', '#597171', '#677D7D', '#758888', '#839494', '#919F9F', '#9FAAAA', '#ADB6B6'],
-            set21: ['#800080', '#8B008B', '#9400D3', '#9932CC', '#BA55D3', '#DA70D6', '#EE82EE', '#FF00FF', '#FF69B4', '#FFC0CB'],
-            set22: ['#556B2F', '#6B8E23', '#808000', '#9ACD32', '#ADFF2F', '#BDB76B', '#DAA520', '#EEE8AA', '#F0E68C', '#FFFF00'],
-            set23: ['#8B4513', '#A0522D', '#CD853F', '#D2691E', '#DEB887', '#F4A460', '#FFDAB9', '#FFE4B5', '#FFEFD5', '#FFF8DC'],
-            set24: ['#00CED1', '#20B2AA', '#40E0D0', '#48D1CC', '#5F9EA0', '#66CDAA', '#7FFFD4', '#AFEEEE', '#E0FFFF', '#F0FFFF'],
-            set25: ['#2F4F4F', '#4A6F6F', '#658F8F', '#80AFAF', '#9BCFCF', '#B6EFEF', '#D1FFFF', '#E6FFFF', '#F0FFFF', '#FFFFFF'],
-            set26: ['#8B008B', '#9932CC', '#BA55D3', '#C71585', '#D87093', '#FF1493', '#FF69B4', '#FFB6C1', '#FFC0CB', '#FFDAB9'],
-            set27: ['#006400', '#228B22', '#32CD32', '#3CB371', '#66CDAA', '#7CFC00', '#7FFF00', '#90EE90', '#98FB98', '#ADFF2F'],
-            set28: ['#00008B', '#0000FF', '#1E90FF', '#4169E1', '#4682B4', '#6495ED', '#7B68EE', '#87CEFA', '#B0C4DE', '#F0F8FF'],
-            set29: ['#8B0000', '#A52A2A', '#B22222', '#C41E3A', '#CD5C5C', '#D2691E', '#DC143C', '#E9967A', '#F08080', '#FA8072'],
-            set30: ['#006400', '#008000', '#228B22', '#2E8B57', '#32CD32', '#3CB371', '#66CDAA', '#8FBC8F', '#90EE90', '#98FB98'],
-            set31: ['#002147', '#00448c', '#0066ff', '#3385ff', '#66a3ff', '#99c2ff', '#cce0ff', '#e6f0ff', '#809fff', '#003380'],
-            set32: ['#330000', '#660000', '#990000', '#cc0000', '#ff0000', '#ff3333', '#ff6666', '#ff9999', '#ffcccc', '#ffe6e6'],
-            set33: ['#004400', '#006600', '#008800', '#00aa00', '#00cc00', '#00ee00', '#33ff33', '#66ff66', '#99ff99', '#ccffcc'],
-            set34: ['#1a0000', '#330000', '#4d0000', '#660000', '#800000', '#990000', '#b30000', '#cc0000', '#e60000', '#ff0000'],
-            set35: ['#003300', '#004d00', '#006600', '#008000', '#009900', '#00b300', '#00cc00', '#00e600', '#00ff00', '#1aff1a'],
-            set36: ['#001a1a', '#003333', '#004d4d', '#006666', '#008080', '#009999', '#00b3b3', '#00cccc', '#00e6e6', '#00ffff'],
-            set37: ['#1a1a00', '#333300', '#4d4d00', '#666600', '#808000', '#999900', '#b3b300', '#cccc00', '#e6e600', '#ffff00'],
-            set38: ['#33001a', '#660033', '#99004d', '#cc0066', '#ff0080', '#ff3399', '#ff66b3', '#ff99cc', '#ffcce6', '#ffe6f2'],
-            set39: ['#00264d', '#004080', '#005ab3', '#0073e6', '#3385ff', '#66a3ff', '#99c2ff', '#cce0ff', '#e6f0ff', '#ffffff'],
-            set40: ['#4d0026', '#800040', '#b30059', '#e60073', '#ff3399', '#ff66b3', '#ff99cc', '#ffcce6', '#ffe6f2', '#ffffff'],
-            set41: ['#003333', '#006666', '#009999', '#00cccc', '#00ffff', '#33ffff', '#66ffff', '#99ffff', '#ccffff', '#e6ffff'],
-            set42: ['#001a00', '#003300', '#004d00', '#006600', '#008000', '#009900', '#00b300', '#00cc00', '#00e600', '#00ff00'],
-            set43: ['#4d004d', '#800080', '#b300b3', '#e600e6', '#ff00ff', '#ff33ff', '#ff66ff', '#ff99ff', '#ffccff', '#ffe6ff'],
-            set44: ['#00004d', '#000080', '#0000b3', '#0000e6', '#0000ff', '#3333ff', '#6666ff', '#9999ff', '#ccccff', '#e6e6ff'],
-            set45: ['#4d2600', '#804000', '#b35900', '#e67300', '#ff8c1a', '#ffb366', '#ffcc99', '#ffe6cc', '#ffffff', '#ffffff'],
-            set46: ['#330000', '#660000', '#990000', '#cc0000', '#ff0000', '#ff3333', '#ff6666', '#ff9999', '#ffcccc', '#ffe6e6'],
-            set47: ['#000033', '#000066', '#000099', '#0000cc', '#0000ff', '#3333ff', '#6666ff', '#9999ff', '#ccccff', '#e6e6ff'],
-            set48: ['#330033', '#660066', '#990099', '#cc00cc', '#ff00ff', '#ff33ff', '#ff66ff', '#ff99ff', '#ffccff', '#ffe6ff'],
-            set49: ['#004d1a', '#00732b', '#00994d', '#00bf66', '#00e680', '#33ff99', '#66ffb3', '#99ffcc', '#ccffe6', '#e6fff2'],
-            set50: ['#1a004d', '#330080', '#4d00b3', '#6600e6', '#8000ff', '#9933ff', '#b366ff', '#cc99ff', '#e6ccff', '#f2e6ff'],
+            // Red
+            set1: ['#4c0000', '#660000', '#800000', '#990000', '#b30000', '#cc0000', '#e60000', '#ff0000', '#ff1a1a', '#ff3333'], // dark
+            set2: ['#800000', '#990000', '#b30000', '#cc0000', '#e60000', '#ff0000', '#ff3333', '#ff6666', '#ff9999', '#ffcccc'], // light
+            set3: ['#ff0000', '#ff1a1a', '#ff3333', '#ff4d4d', '#ff6666', '#ff8080', '#ff9999', '#ffb3b3', '#ffcccc', '#ffe6e6'], // pastel
+            set4: ['#b30000', '#cc0000', '#e60000', '#ff0000', '#ff1a1a', '#ff3333', '#ff4d4d', '#ff6666', '#ff8080', '#ff9999'], // opaque
+            set5: ['#ff4d4d80', '#ff666680', '#ff808080', '#ff999980', '#ffb3b380', '#ffcccc80', '#ffe6e680', '#ff8080', '#ff9999', '#ffb3b3'], // translucent
+
+            // Pink
+            set6: ['#660033', '#800040', '#99004d', '#b30059', '#cc0066', '#e60073', '#ff0077', '#ff3399', '#ff66b3', '#ff99cc'], // dark
+            set7: ['#ff0047', '#ff195c', '#ff3370', '#ff4d85', '#ff6699', '#ff80a0', '#ff99b3', '#ffb3c6', '#ffccd9', '#ffe6ec'], // light
+            set8: ['#ff4d4d', '#ff6666', '#ff8080', '#ff9999', '#ffb3b3', '#ff99cc', '#ffb3d1', '#ffccdb', '#ffe6e8', '#ffebf0'], // pastel
+            set9: ['#b30047', '#cc0052', '#e6005c', '#ff0077', '#ff1a8c', '#ff3399', '#ff4d4d', '#ff6666', '#ff8080', '#ff9999'], // opaque
+            set10: ['#ff66b380', '#ff80bf80', '#ff99cc80', '#ffb3d980', '#ffccd580', '#ff4d4d80', '#ff666680', '#ff808080', '#ff999980', '#ffb3b380'], // translucent
+
+            // Purple
+            set11: ['#2e004d', '#400066', '#520080', '#660099', '#7f00b3', '#9900cc', '#b300e6', '#cc00ff', '#d11aff', '#e666ff'], // dark
+            set12: ['#9f33ff', '#a966ff', '#b366ff', '#be99ff', '#c7adff', '#d1b3ff', '#dbd9ff', '#e5e0ff', '#efe6ff', '#f4ecff'], // light
+            set13: ['#d1b3ff', '#d4aaff', '#dcb3ff', '#e4ccff', '#ecdbff', '#e5e0ff', '#efe6ff', '#f4ecff', '#dbccff', '#f2e8ff'], // pastel
+            set14: ['#660099', '#8000cc', '#9933ff', '#b366ff', '#cc80ff', '#d4aaff', '#ddccff', '#e6e0ff', '#efe6ff', '#f4ecff'], // opaque
+            set15: ['#a366ff80', '#b399ff80', '#cc66ff80', '#d1aaff80', '#d4aaff80', '#dcb3ff80', '#e6ccff80', '#dbccff80', '#e5e0ff80', '#efe6ff80'], // translucent
+
+            // Blue
+            set16: ['#003366', '#004080', '#004d99', '#005ab3', '#0066cc', '#0073e6', '#0080ff', '#3399ff', '#66b2ff', '#99ccff'], // dark
+            set17: ['#3399ff', '#4da6ff', '#66b3ff', '#80bfff', '#99ccff', '#b3d9ff', '#cce6ff', '#d9f2ff', '#e6f7ff', '#f0faff'], // light
+            set18: ['#005ab3', '#0073e6', '#1a8cff', '#3399ff', '#4da6ff', '#66b3ff', '#80bfff', '#99ccff', '#b3d9ff', '#cce6ff'], // pastel
+            set19: ['#0066cc', '#0073e6', '#0080ff', '#3399ff', '#66b2ff', '#80bfff', '#99ccff', '#b3d9ff', '#cce6ff', '#e6f2ff'], // opaque
+            set20: ['#80b3ff80', '#99ccff80', '#b3d9ff80', '#cce6ff80', '#d9f2ff80', '#e6f2ff80', '#f0faff80', '#e6f7ff80', '#cce6ff80', '#b3d9ff80'], // translucent
+
+            // Green
+            set21: ['#004d1a', '#006633', '#007f4d', '#009966', '#00b37f', '#00cc99', '#00e6b2', '#00ffc6', '#1affd1', '#33ffdb'], // dark
+            set22: ['#1aff8c', '#33ff99', '#4dffa6', '#66ffb3', '#80ffbf', '#99ffcc', '#b3ffd9', '#ccffe6', '#e6fff2', '#f0fff9'], // light
+            set23: ['#00e673', '#00ff80', '#1aff8c', '#33ff99', '#4dffa6', '#66ffb3', '#80ffbf', '#99ffcc', '#b3ffd9', '#ccffe6'], // pastel
+            set24: ['#00b37f', '#00cc99', '#00e6b2', '#00ffc6', '#1affd1', '#33ffdb', '#4dffe6', '#66ffef', '#80fff9', '#99ffff'], // opaque
+            set25: ['#80ffbf80', '#99ffcc80', '#b3ffd980', '#ccffe680', '#dcb3ff80', '#e6fff280', '#f0fff980', '#e6ffdb80', '#ccffcc80', '#b3ffd980'], // translucent
+
+            // Orange
+            set26: ['#663300', '#804000', '#994d00', '#b35900', '#cc6600', '#e67300', '#ff8000', '#ff9933', '#ffb366', '#ffcc99'], // dark
+            set27: ['#cc6600', '#e67300', '#ff8000', '#ff9933', '#ffb366', '#ffcc99', '#ffdbb3', '#ffe6cc', '#fff2e6', '#fff9f0'], // light
+            set28: ['#994d00', '#b35900', '#cc6600', '#e67300', '#ff8000', '#ff9933', '#ffb366', '#ffcc99', '#ffdbb3', '#ffe6cc'], // pastel
+            set29: ['#ff8c1a', '#ffa64d', '#ffbf80', '#ffd9b3', '#fff2e6', '#ffe0cc', '#ffc299', '#ffa366', '#ff944d', '#ff8533'], // opaque (new)
+            set30: ['#ffb36680', '#ffc08080', '#ffcc9980', '#ffd9b380', '#ffe6cc80', '#fff2e680', '#fff9f080', '#ffe6db80', '#ffcc9980', '#ffb36680'], // translucent
+
+            // Yellow
+            set31: ['#666600', '#808000', '#999900', '#b3b300', '#cccc00', '#e6e600', '#ffff00', '#ffff33', '#ffff66', '#ffff99'], // dark
+            set32: ['#ffff1a', '#ffff33', '#ffff4d', '#ffff66', '#ffff80', '#ffff99', '#ffffb3', '#ffffcc', '#ffffe6', '#ffffff'], // light
+            set33: ['#b3b300', '#cccc00', '#e6e600', '#ffff00', '#ffff1a', '#ffff33', '#ffff4d', '#ffff66', '#ffff80', '#ffff99'], // pastel
+            set34: ['#e6e600', '#ffff00', '#ffff4d', '#ffff80', '#ffffb3', '#ffffe6', '#ffffd9', '#ffffcc', '#ffffbf', '#ffffb3'], // opaque (new)
+            set35: ['#ffff0080', '#ffff3380', '#ffff6680', '#ffff9980', '#ffffb380', '#ffffcc80', '#ffffe680', '#fffff280', '#fffff980', '#fffffc80'], // translucent (new)
+
+            // Brown
+            set36: ['#331a00', '#4d2600', '#663300', '#804000', '#994d00', '#b35900', '#cc6600', '#e67300', '#ff8000', '#ff9933'], // dark
+            set37: ['#804000', '#994d00', '#b35900', '#cc6600', '#e67300', '#ff8000', '#ff9933', '#ffb366', '#ffcc99', '#ffdbb3'], // light
+            set38: ['#663300', '#804000', '#994d00', '#b35900', '#cc6600', '#e67300', '#ff8000', '#ff9933', '#ffb366', '#ffcc99'], // pastel
+            set39: ['#994d00', '#b35900', '#cc6600', '#e67300', '#ff8000', '#ff9933', '#ffb366', '#ffcc99', '#ffdbb3', '#ffe6cc'], // opaque
+            set40: ['#80400080', '#994d0080', '#b35900a0', '#cc6600a0', '#e67300a0', '#ff8000a0', '#ff9933a0', '#ffb366a0', '#ffcc99a0', '#ffdbb3a0'], // translucent (new)
+
+            // Black and Gray
+            set41: ['#000000', '#1a1a1a', '#333333', '#4d4d4d', '#666666', '#808080', '#999999', '#b3b3b3', '#cccccc', '#e6e6e6'], // dark
+            set42: ['#4d4d4d', '#666666', '#808080', '#999999', '#b3b3b3', '#cccccc', '#e6e6e6', '#f2f2f2', '#f5f5f5', '#ffffff'], // light
+            set43: ['#262626', '#404040', '#595959', '#737373', '#8c8c8c', '#a6a6a6', '#bfbfbf', '#d9d9d9', '#f2f2f2', '#ffffff'], // pastel (new)
+            set44: ['#000000', '#1a1a1a', '#333333', '#4d4d4d', '#666666', '#808080', '#999999', '#b3b3b3', '#cccccc', '#e6e6e6'], // opaque
+            set45: ['#00000080', '#1a1a1a80', '#33333380', '#4d4d4d80', '#66666680', '#80808080', '#99999980', '#b3b3b380', '#cccccc80', '#e6e6e680'], // translucent (new)
+
+            // Dual tone
+            set46: ['#000080', '#1a1a99', '#3333b3', '#4d4dcc', '#6666e6', '#8080ff', '#9999ff', '#b3b3ff', '#ccccff', '#e6e6ff'], // Navy to Light Blue
+            set47: ['#8B0000', '#a31313', '#bc2626', '#d43939', '#eb4d4d', '#ff6666', '#ff8080', '#ff9999', '#ffb3b3', '#ffcccc'], // Dark Red to Light Pink
+            set48: ['#006400', '#137d13', '#269326', '#39aa39', '#4dc24d', '#66d966', '#80e680', '#99f299', '#b3ffb3', '#ccffcc'], // Dark Green to Light Green
+            set49: ['#4B0082', '#5c1a93', '#6d33a3', '#7e4db4', '#8f66c4', '#a080d5', '#b199e5', '#c2b3f6', '#d3ccff', '#e4e6ff'], // Indigo to Lavender
+            set50: ['#FF4500', '#ff5719', '#ff6933', '#ff7c4d', '#ff8f66', '#ffa280', '#ffb599', '#ffc8b3', '#ffdbcc', '#ffede6'], // Orange Red to Peach
+            set51: ['#2F4F4F', '#3d5c5c', '#4b6969', '#597676', '#668383', '#749090', '#829d9d', '#90aaaa', '#9eb8b8', '#acc5c5'], // Dark Slate Gray to Light Slate Gray
+            set52: ['#FFD700', '#ffd913', '#ffdc26', '#ffdf39', '#ffe24d', '#ffe566', '#ffe880', '#ffeb99', '#ffeeb3', '#fff2cc'], // Gold to Light Yellow
+            set53: ['#8B008B', '#9d139d', '#b026b0', '#c239c2', '#d44dd4', '#e666e6', '#f280f2', '#ff99ff', '#ffb3ff', '#ffccff'], // Dark Magenta to Light Pink
+            set54: ['#20B2AA', '#33bbb3', '#46c4bd', '#59cdc6', '#6cd6d0', '#80dfd9', '#93e8e3', '#a6f2ec', '#b9fbf6', '#ccffff'], // Light Sea Green to Light Cyan
+            set55: ['#000000', '#1a1a1a', '#333333', '#4d4d4d', '#666666', '#808080', '#999999', '#b3b3b3', '#cccccc', '#e6e6e6'],  // Black to Light Gray
+
+            // Dark Green to Purple
+            set56: ['#006400', '#1e5735', '#3c4a6a', '#5a3d9f', '#7830d4', '#9623ff', '#b41aff', '#d211ff', '#f008ff', '#ff00ff'],
+            set57: ['#005000', '#1d4530', '#3a3a60', '#572f90', '#7424c0', '#9119f0', '#ae0fff', '#cb05ff', '#e800ff', '#ff00ff'],
+            set58: ['#004000', '#1c332b', '#382656', '#541981', '#700cac', '#8c00d7', '#a800ff', '#c400ff', '#e000ff', '#fc00ff'],
+            set59: ['#003000', '#1b2126', '#36124c', '#510372', '#6c0098', '#8700be', '#a200e4', '#bd00ff', '#d800ff', '#f300ff'],
+            set60: ['#002000', '#1a0f21', '#340042', '#4e0063', '#680084', '#8200a5', '#9c00c6', '#b600e7', '#d000ff', '#ea00ff'],
+
+            // Dark Yellow to Light Pink
+            set61: ['#8B8B00', '#997a1e', '#a7693c', '#b5585a', '#c34778', '#d13696', '#df25b4', '#ed14d2', '#fb03f0', '#ff00ff'],
+            set62: ['#999900', '#a68724', '#b37548', '#c0636c', '#cd5190', '#da3fb4', '#e72dd8', '#f41bfc', '#ff09ff', '#ff00ff'],
+            set63: ['#A6A600', '#b3942a', '#c08254', '#cd707e', '#da5ea8', '#e74cd2', '#f43afc', '#ff28ff', '#ff16ff', '#ff04ff'],
+            set64: ['#B3B300', '#c0a130', '#cd8f60', '#da7d90', '#e76bc0', '#f459f0', '#ff47ff', '#ff35ff', '#ff23ff', '#ff11ff'],
+            set65: ['#C0C000', '#cdae36', '#da9c6c', '#e78aa2', '#f478d8', '#ff66ff', '#ff54ff', '#ff42ff', '#ff30ff', '#ff1eff'],
+
+            // Light Sea to Pastel Purple
+            set66: ['#20B2AA', '#37a3b7', '#4e94c4', '#6585d1', '#7c76de', '#9367eb', '#aa58f8', '#c149ff', '#d83aff', '#ef2bff'],
+            set67: ['#3CBDB6', '#51aec1', '#669fcc', '#7b90d7', '#9081e2', '#a572ed', '#ba63f8', '#cf54ff', '#e445ff', '#f936ff'],
+            set68: ['#58C8C2', '#6bb9cb', '#7eaad4', '#919bdd', '#a48ce6', '#b77def', '#ca6ef8', '#dd5fff', '#f050ff', '#ff41ff'],
+            set69: ['#74D3CE', '#85c4d5', '#96b5dc', '#a7a6e3', '#b897ea', '#c988f1', '#da79f8', '#eb6aff', '#fc5bff', '#ff4cff'],
+            set70: ['#90DEDA', '#9fcfdf', '#aec0e4', '#bdb1e9', '#cca2ee', '#db93f3', '#ea84f8', '#f975fd', '#ff66ff', '#ff57ff'],
+
+            // Brown to Chocolate
+            set71: ['#8B4513', '#8d4114', '#903d15', '#923916', '#953517', '#973118', '#9a2d19', '#9c291a', '#9f251b', '#a1211c'],
+            set72: ['#A0522D', '#a24e2e', '#a54a2f', '#a74630', '#aa4231', '#ac3e32', '#af3a33', '#b13634', '#b43235', '#b62e36'],
+            set73: ['#B5754E', '#b77050', '#b96b52', '#bb6654', '#bd6156', '#bf5c58', '#c1575a', '#c3525c', '#c54d5e', '#c74860'],
+            set74: ['#CA9873', '#cc9374', '#ce8e75', '#d08976', '#d28477', '#d47f78', '#d67a79', '#d8757a', '#da707b', '#dc6b7c'],
+            set75: ['#DFBB9C', '#e1b69c', '#e3b19c', '#e5ac9c', '#e7a79c', '#e9a29c', '#eb9d9c', '#ed989c', '#ef939c', '#f18e9c'],
+
+            // Light Black to Dark Orange
+            set76: ['#3F3F3F', '#4b3a35', '#57352b', '#633021', '#6f2b17', '#7b260d', '#872103', '#931c00', '#9f1700', '#ab1200'],
+            set77: ['#4F4F4F', '#5b4a45', '#67453b', '#734031', '#7f3b27', '#8b361d', '#973113', '#a32c09', '#af2700', '#bb2200'],
+            set78: ['#5F5F5F', '#6b5a55', '#77554b', '#835041', '#8f4b37', '#9b462d', '#a74123', '#b33c19', '#bf370f', '#cb3205'],
+            set79: ['#6F6F6F', '#7b6a65', '#87655b', '#936051', '#9f5b47', '#ab563d', '#b75133', '#c34c29', '#cf471f', '#db4215'],
+            set80: ['#7F7F7F', '#8b7a75', '#97756b', '#a37061', '#af6b57', '#bb664d', '#c76143', '#d35c39', '#df572f', '#eb5225'],
+
+            // Ocean Green to Dark Blue
+            set81: ['#48D1CC', '#42b9c7', '#3ca1c2', '#3689bd', '#3071b8', '#2a59b3', '#2441ae', '#1e29a9', '#1811a4', '#12009F'],
+            set82: ['#40E0D0', '#39c8cb', '#32b0c6', '#2b98c1', '#2480bc', '#1d68b7', '#1650b2', '#0f38ad', '#0820a8', '#0108A3'],
+            set83: ['#20B2AA', '#1c9caa', '#1886aa', '#1470aa', '#105aaa', '#0c44aa', '#082eaa', '#0418aa', '#0002aa', '#0000AA'],
+            set84: ['#5F9EA0', '#548aa1', '#4976a2', '#3e62a3', '#334ea4', '#283aa5', '#1d26a6', '#1212a7', '#0700a8', '#0000A9'],
+            set85: ['#008B8B', '#007891', '#006597', '#00529d', '#003fa3', '#002ca9', '#0019af', '#0006b5', '#0000bb', '#0000C1'],
+
+            // Metal Yellow to Golden Black
+            set86: ['#FFD700', '#e5c206', '#ccad0c', '#b29812', '#998318', '#7f6e1e', '#665924', '#4c442a', '#332f30', '#1A1A1A'],
+            set87: ['#FFDF00', '#e6c908', '#ccb310', '#b39d18', '#998720', '#7f7128', '#665b30', '#4c4538', '#332f40', '#1A1A1A'],
+            set88: ['#FFC000', '#e5ad04', '#cc9b08', '#b2880c', '#997610', '#7f6314', '#665118', '#4c3e1c', '#332c20', '#1A1A1A'],
+            set89: ['#FFB400', '#e5a204', '#cc9008', '#b27e0c', '#996c10', '#7f5a14', '#664818', '#4c3620', '#33241A', '#1A1A1A'],
+            set90: ['#FFA700', '#e59604', '#cc8608', '#b2750c', '#996510', '#7f5414', '#664318', '#4c3220', '#33211A', '#1A1A1A'],
+
+            // Dark Chocolate to Milky White
+            set91: ['#3C1414', '#56302f', '#704c4a', '#8a6865', '#a48480', '#bea09b', '#d8bcb6', '#f2d8d1', '#fff4ec', '#FFFFFF'],
+            set92: ['#2C0D0D', '#483028', '#645343', '#80765e', '#9c9979', '#b8bc94', '#d4dfaf', '#f0ffca', '#ffffe5', '#FFFFFF'],
+            set93: ['#4A0404', '#61201f', '#783c3a', '#8f5855', '#a67470', '#bd908b', '#d4aca6', '#ebc8c1', '#ffe4dc', '#FFFFFF'],
+            set94: ['#330000', '#4d1c1a', '#673834', '#81544e', '#9b7068', '#b58c82', '#cfa89c', '#e9c4b6', '#ffe0d0', '#FFFFFF'],
+            set95: ['#2B1100', '#46291c', '#614138', '#7c5954', '#977170', '#b2898c', '#cda1a8', '#e8b9c4', '#ffd1e0', '#FFFFFF'],
+
+            // Sunset Gradient
+            set96: ['#FF6B6B', '#FFA06B', '#FFDAB9', '#FFE4B5', '#FFEFD5', '#FFF0F5', '#FFE4E1', '#FFC0CB', '#FFB6C1', '#FF69B4'],
+
+            // Ocean Depths
+            set97: ['#000080', '#191970', '#0000CD', '#0000FF', '#1E90FF', '#00BFFF', '#87CEFA', '#ADD8E6', '#B0E0E6', '#E0FFFF'],
+
+            // Forest Tones
+            set98: ['#006400', '#228B22', '#32CD32', '#3CB371', '#66CDAA', '#8FBC8F', '#98FB98', '#90EE90', '#ADFF2F', '#7CFC00'],
+
+            // Autumn Leaves
+            set99: ['#8B4513', '#A0522D', '#CD853F', '#DEB887', '#D2691E', '#FF7F50', '#FF6347', '#FF4500', '#FFA500', '#FFD700'],
+
+            // Cosmic Purple
+            set100: ['#4B0082', '#663399', '#8A2BE2', '#9370DB', '#BA55D3', '#DA70D6', '#EE82EE', '#DDA0DD', '#D8BFD8', '#E6E6FA']
         };
 
         let currentPage = 1;
@@ -204,55 +299,6 @@
         }
 
         displaySets(currentPage);
-    </script>
-</body>
-</html>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Color Test</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-        }
-        .color-box {
-            width: 100px;
-            height: 100px;
-            margin: 10px;
-            display: inline-block;
-        }
-        header, footer, .extra-box {
-            padding: 20px;
-            text-align: center;
-        }
-        p {
-            padding: 20px;
-            text-align: justify;
-        }
-    </style>
-</head>
-<body>
-    <header id="header">Header</header>
-    <div class="center-align">
-        <button onclick="applyTestColors()">Apply Test Colors</button>
-    </div>
-    <p id="content">This is a sample paragraph to demonstrate the color test functionality. The background color of this paragraph will change based on the applied test colors.</p>
-    <div class="color-box" style="background-color: red;"></div>
-    <div class="color-box" style="background-color: green;"></div>
-    <div class="color-box" style="background-color: blue;"></div>
-    <footer id="footer">Footer</footer>
-    <script>
-        function applyTestColors() {
-            const colors = ['red', 'green', 'blue', 'white'];
-            document.getElementById('header').style.backgroundColor = colors[0];
-            document.getElementById('content').style.backgroundColor = colors[1];
-            document.getElementById('footer').style.backgroundColor = colors[2];
-            document.getElementById('header').style.color = colors[3];
-            document.getElementById('content').style.color = colors[3];
-            document.getElementById('footer').style.color = colors[3];
-        }
     </script>
 </body>
 </html>
