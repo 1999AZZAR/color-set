@@ -726,16 +726,16 @@ function displaySets(page) {
             const colors = colorSets[set];
             const cssVars = `
 :root {
---primary-color: ${colors[0]};
---secondary-color: ${colors[1]};
---tertiary-color: ${colors[2]};
---quaternary-color: ${colors[3]};
---quinary-color: ${colors[4]};
---senary-color: ${colors[5]};
---septenary-color: ${colors[6]};
---octonary-color: ${colors[7]};
---nonary-color: ${colors[8]};
---denary-color: ${colors[9]};
+    --primary-color: ${colors[0]};
+    --secondary-color: ${colors[1]};
+    --tertiary-color: ${colors[2]};
+    --quaternary-color: ${colors[3]};
+    --quinary-color: ${colors[4]};
+    --senary-color: ${colors[5]};
+    --septenary-color: ${colors[6]};
+    --octonary-color: ${colors[7]};
+    --nonary-color: ${colors[8]};
+    --denary-color: ${colors[9]};
 }`;
             copyToClipboard(cssVars);
         });
