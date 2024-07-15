@@ -721,7 +721,7 @@ function displaySets(page) {
 
     keys.slice(start, end).forEach((set, index) => {
         const setTitle = document.createElement('h2');
-        setTitle.textContent = `Set ${start + index + 1}`;
+        setTitle.innerHTML = `Set ${start + index + 1} <i class="far fa-clone"></i>`;
         setTitle.addEventListener('click', () => {
             const colors = colorSets[set];
             const cssVars = `
@@ -757,17 +757,17 @@ function displaySets(page) {
     displayPagination(keys.length, page);
 }
 
+
 function displayPagination(totalSets, page) {
     paginationContainer.innerHTML = '';
     const totalPages = Math.ceil(totalSets / setsPerPage);
 
     for (let i = 1; i <= totalPages; i++) {
         const button = document.createElement('button');
-        button.textContent = i;
+        button.innerHTML = `<i class="far fa-file-lines"></i>⠀${i}`;
         if (i === page) {
             button.style.backgroundColor = '#555';
         }
-        button.innerHTML = `<img src="page.png" alt="Icon">${i}`;
         button.addEventListener('click', () => {
             currentPage = i;
             displaySets(currentPage);
@@ -775,5 +775,6 @@ function displayPagination(totalSets, page) {
         paginationContainer.appendChild(button);
     }
 }
+
 
 displaySets(currentPage);
