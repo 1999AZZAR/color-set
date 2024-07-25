@@ -705,6 +705,9 @@ const setsPerPage = 5;
 const container = document.getElementById('color-sets');
 const paginationContainer = document.getElementById('pagination');
 
+console.log('Container:', container);
+console.log('Pagination Container:', paginationContainer);
+
 function copyToClipboard(text) {
     navigator.clipboard.writeText(text).then(() => {
         alert('Color set copied to clipboard!');
@@ -724,6 +727,7 @@ document.getElementById('flip-colors').addEventListener('change', () => {
 function displaySets(page) {
     const flipCheckbox = document.getElementById('flip-colors');
     container.innerHTML = '';
+    console.log('Displaying sets for page:', page);
     const keys = Object.keys(colorSets);
     const start = (page - 1) * setsPerPage;
     const end = start + setsPerPage;
