@@ -728,7 +728,6 @@ function displaySets(page) {
 
         const testButton = document.createElement('button');
         testButton.id = 'test-it';
-        testButton.classList.add('styled-button');
         testButton.innerHTML = 'Test It';
         testButton.addEventListener('click', () => {
             const colors = colorSets[set];
