@@ -713,7 +713,12 @@ function copyToClipboard(text) {
     });
 }
 
+function flipColors(colors) {
+    return colors.slice().reverse();
+}
+
 function displaySets(page) {
+    const flipCheckbox = document.getElementById('flip-colors');
     container.innerHTML = '';
     const keys = Object.keys(colorSets);
     const start = (page - 1) * setsPerPage;
@@ -736,6 +741,8 @@ function displaySets(page) {
         testButton.style.color = lastColor;
         testButton.addEventListener('click', () => {
             const colors = colorSets[set];
+            const colors = flipCheckbox.checked ? flipColors(colorSets[set]) : colorSets[set];
+            const colors = flipCheckbox.checked ? flipColors(colorSets[set]) : colorSets[set];
             const cssVars = `
 :root {
     --primary-color: ${colors[0]};
