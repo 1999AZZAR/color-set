@@ -724,6 +724,7 @@ function displaySets(page) {
         setTitle.innerHTML = `Set ${start + index + 1} <i class="far fa-clone"></i>`;
         const testButton = document.createElement('button');
         testButton.id = 'test-it';
+        testButton.classList.add('styled-button');
         testButton.innerHTML = 'Test It';
         testButton.addEventListener('click', () => {
             const colors = colorSets[set];
