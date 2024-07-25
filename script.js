@@ -745,7 +745,7 @@ function displaySets(page) {
         setContainer.classList.add('color-set');
         container.appendChild(setContainer);
 
-        colorSets[set].forEach(color => {
+        colorSets[set].filter(color => !color.endsWith('80')).forEach(color => {
             const colorBox = document.createElement('div');
             colorBox.classList.add('color-box');
             colorBox.style.backgroundColor = color;
