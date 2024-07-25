@@ -730,7 +730,10 @@ function displaySets(page) {
 
         const testButton = document.createElement('button');
         testButton.id = 'test-it';
+        const lastColor = colorSets[set][colorSets[set].length - 1];
         testButton.innerHTML = 'Test It';
+        testButton.style.backgroundColor = 'transparent';
+        testButton.style.color = lastColor;
         testButton.addEventListener('click', () => {
             const colors = colorSets[set];
             const cssVars = `
