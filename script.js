@@ -720,14 +720,13 @@ function flipColors(colors) {
     return colors.slice().reverse();
 }
 
-document.addEventListener('DOMContentLoaded', () => {
-    const flipCheckbox = document.getElementById('flip-colors');
-    flipCheckbox.addEventListener('change', () => {
-        displaySets(currentPage);
-    });
-    displaySets(currentPage);
-});
-});
+ document.addEventListener('DOMContentLoaded', () => {
+     const flipCheckbox = document.getElementById('flip-colors');
+     flipCheckbox.addEventListener('change', () => {
+         displaySets(currentPage);
+     });
+     displaySets(currentPage);
+ });
 
 function displaySets(page) {
     const flipCheckbox = document.getElementById('flip-colors');
