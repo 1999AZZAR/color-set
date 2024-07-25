@@ -721,7 +721,11 @@ function displaySets(page) {
 
     keys.slice(start, end).forEach((set, index) => {
         const setTitle = document.createElement('h2');
+        const setTitleContainer = document.createElement('div');
+        setTitleContainer.classList.add('set-title-container');
         setTitle.innerHTML = `Set ${start + index + 1} <i class="far fa-clone"></i>`;
+        setTitleContainer.appendChild(setTitle);
+
         const testButton = document.createElement('button');
         testButton.id = 'test-it';
         testButton.classList.add('styled-button');
@@ -761,8 +765,8 @@ function displaySets(page) {
 }`;
             copyToClipboard(cssVars);
         });
-        setTitle.appendChild(testButton);
-        container.appendChild(setTitle);
+        setTitleContainer.appendChild(testButton);
+        container.appendChild(setTitleContainer);
 
         const setContainer = document.createElement('div');
         setContainer.classList.add('color-set');

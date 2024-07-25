@@ -188,3 +188,9 @@ h2 {
 #test-it:hover {
     background-color: #45a049;
 }
+.set-title-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
