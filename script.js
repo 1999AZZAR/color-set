@@ -740,8 +740,6 @@ function displaySets(page) {
         testButton.style.backgroundColor = 'transparent';
         testButton.style.color = lastColor;
         testButton.addEventListener('click', () => {
-            const colors = colorSets[set];
-            const colors = flipCheckbox.checked ? flipColors(colorSets[set]) : colorSets[set];
             const colors = flipCheckbox.checked ? flipColors(colorSets[set]) : colorSets[set];
             const cssVars = `
 :root {
@@ -760,7 +758,7 @@ function displaySets(page) {
             window.location.href = 'https://1999azzar.github.io/color-scheme-tester/';
         });
         setTitle.addEventListener('click', () => {
-            const colors = colorSets[set];
+            const colors = flipCheckbox.checked ? flipColors(colorSets[set]) : colorSets[set];
             const cssVars = `
 :root {
     --primary-color: ${colors[0]};
