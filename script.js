@@ -722,6 +722,27 @@ function displaySets(page) {
     keys.slice(start, end).forEach((set, index) => {
         const setTitle = document.createElement('h2');
         setTitle.innerHTML = `Set ${start + index + 1} <i class="far fa-clone"></i>`;
+        const testButton = document.createElement('button');
+        testButton.id = 'test-it';
+        testButton.innerHTML = 'Test It';
+        testButton.addEventListener('click', () => {
+            const colors = colorSets[set];
+            const cssVars = `
+:root {
+    --primary-color: ${colors[0]};
+    --secondary-color: ${colors[1]};
+    --tertiary-color: ${colors[2]};
+    --quaternary-color: ${colors[3]};
+    --quinary-color: ${colors[4]};
+    --senary-color: ${colors[5]};
+    --septenary-color: ${colors[6]};
+    --octonary-color: ${colors[7]};
+    --nonary-color: ${colors[8]};
+    --denary-color: ${colors[9]};
+}`;
+            copyToClipboard(cssVars);
+            window.location.href = 'https://1999azzar.github.io/color-scheme-tester/';
+        });
         setTitle.addEventListener('click', () => {
             const colors = colorSets[set];
             const cssVars = `
@@ -739,6 +760,7 @@ function displaySets(page) {
 }`;
             copyToClipboard(cssVars);
         });
+        setTitle.appendChild(testButton);
         container.appendChild(setTitle);
 
         const setContainer = document.createElement('div');
