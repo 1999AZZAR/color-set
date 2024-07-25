@@ -727,7 +727,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
     displaySets(currentPage);
 });
-    displaySets(currentPage);
 });
 
 function displaySets(page) {
