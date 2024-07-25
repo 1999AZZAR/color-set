@@ -720,7 +720,13 @@ function flipColors(colors) {
     return colors.slice().reverse();
 }
 
-document.getElementById('flip-colors').addEventListener('change', () => {
+document.addEventListener('DOMContentLoaded', () => {
+    const flipCheckbox = document.getElementById('flip-colors');
+    flipCheckbox.addEventListener('change', () => {
+        displaySets(currentPage);
+    });
+    displaySets(currentPage);
+});
     displaySets(currentPage);
 });
 
@@ -732,12 +738,6 @@ function displaySets(page) {
     const start = (page - 1) * setsPerPage;
     const end = start + setsPerPage;
 
-    const flipCheckboxContainer = document.createElement('div');
-    flipCheckboxContainer.innerHTML = `
-        <label for="flip-colors">Flip Colors</label>
-        <input type="checkbox" id="flip-colors">
-    `;
-    container.appendChild(flipCheckboxContainer);
 
     keys.slice(start, end).forEach((set, index) => {
         const setTitle = document.createElement('h2');
