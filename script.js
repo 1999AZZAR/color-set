@@ -723,7 +723,9 @@ function displaySets(page) {
         const setTitle = document.createElement('h2');
         const setTitleContainer = document.createElement('div');
         setTitleContainer.classList.add('set-title-container');
+        const firstColor = colorSets[set][0];
         setTitle.innerHTML = `Set ${start + index + 1} <i class="far fa-clone"></i>`;
+        setTitle.style.color = firstColor;
         setTitleContainer.appendChild(setTitle);
 
         const testButton = document.createElement('button');
