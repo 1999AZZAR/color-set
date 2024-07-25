@@ -13,6 +13,7 @@ body {
     font-family: 'Kalnia', roboto, sans-serif;
     color: #333;
     text-align: center;
+    font-size: 1.2rem; /* Increase font size for better readability */
 }
 
 .footer a {
@@ -28,6 +29,7 @@ body {
 h1 {
     font-weight: 500;
     color: #333;
+    font-size: 2rem; /* Increase font size for better readability */
 }
 
 h2 {
@@ -35,6 +37,7 @@ h2 {
     font-weight: 500;
     color: #363636;
     cursor: pointer;
+    font-size: 1.5rem; /* Increase font size for better readability */
 }
 
 .color-set {
