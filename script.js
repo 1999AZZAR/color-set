@@ -781,7 +781,8 @@ function displaySets(page) {
         setContainer.classList.add('color-set');
         container.appendChild(setContainer);
 
-        colorSets[set].forEach(color => {
+        const colors = flipCheckbox.checked ? flipColors(colorSets[set]) : colorSets[set];
+        colors.forEach(color => {
             const colorBox = document.createElement('div');
             colorBox.classList.add('color-box');
             colorBox.style.backgroundColor = color;
