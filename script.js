@@ -717,6 +717,10 @@ function flipColors(colors) {
     return colors.slice().reverse();
 }
 
+document.getElementById('flip-colors').addEventListener('change', () => {
+    displaySets(currentPage);
+});
+
 function displaySets(page) {
     const flipCheckbox = document.getElementById('flip-colors');
     container.innerHTML = '';
