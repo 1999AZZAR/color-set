@@ -732,6 +732,13 @@ function displaySets(page) {
     const start = (page - 1) * setsPerPage;
     const end = start + setsPerPage;
 
+    const flipCheckboxContainer = document.createElement('div');
+    flipCheckboxContainer.innerHTML = `
+        <label for="flip-colors">Flip Colors</label>
+        <input type="checkbox" id="flip-colors">
+    `;
+    container.appendChild(flipCheckboxContainer);
+
     keys.slice(start, end).forEach((set, index) => {
         const setTitle = document.createElement('h2');
         const setTitleContainer = document.createElement('div');
