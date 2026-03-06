@@ -704,127 +704,329 @@ let currentPage = 1;
 const setsPerPage = 5;
 const container = document.getElementById('color-sets');
 const paginationContainer = document.getElementById('pagination');
+let selectedHue = null;
+const HUE_TOLERANCE = 50;
 
-console.log('Container:', container);
-console.log('Pagination Container:', paginationContainer);
+function getLuminance(hex) {
+    const rgb = hex.replace(/^#/, '').match(/.{2}/g)?.map((x) => parseInt(x, 16)) ?? [0, 0, 0];
+    const [r, g, b] = rgb.map((c) => (c / 255) <= 0.03928 ? c / 255 / 12.92 : Math.pow((c / 255 + 0.055) / 1.055, 2.4));
+    return 0.2126 * r + 0.7152 * g + 0.0722 * b;
+}
+
+function textColorForBg(hex) {
+    return getLuminance(hex) > 0.45 ? '#1a1d1e' : '#ffffff';
+}
+
+function showToast(message) {
+    const toast = document.getElementById('toast');
+    toast.textContent = message;
+    toast.removeAttribute('hidden');
+    toast.setAttribute('data-visible', '');
+    clearTimeout(toast._hide);
+    toast._hide = setTimeout(() => {
+        toast.removeAttribute('data-visible');
+        toast.setAttribute('hidden', '');
+    }, 2500);
+}
 
 function copyToClipboard(text) {
     navigator.clipboard.writeText(text).then(() => {
-        alert('Color set copied to clipboard!');
-    }).catch(err => {
-        console.error('Failed to copy text: ', err);
+        showToast('Copied to clipboard');
+    }).catch(() => {
+        showToast('Copy failed');
     });
+}
+
+function getCssVars(colors) {
+    const names = ['primary', 'secondary', 'tertiary', 'quaternary', 'quinary', 'senary', 'septenary', 'octonary', 'nonary', 'denary'];
+    return `:root {\n${names.map((n, i) => `    --${n}-color: ${colors[i]};`).join('\n')}\n}`;
 }
 
 function flipColors(colors) {
     return colors.slice().reverse();
 }
 
- document.addEventListener('DOMContentLoaded', () => {
-     const flipCheckbox = document.getElementById('flip-colors');
-     flipCheckbox.addEventListener('change', () => {
-         displaySets(currentPage);
-     });
-     displaySets(currentPage);
- });
+function hexToHue(hex) {
+    const m = hex.replace(/^#/, '').slice(0, 6).match(/.{2}/g);
+    if (!m) return 0;
+    const [r, g, b] = m.map((x) => parseInt(x, 16) / 255);
+    const max = Math.max(r, g, b), min = Math.min(r, g, b);
+    let h = 0;
+    if (max !== min) {
+        const d = max - min;
+        switch (max) {
+            case r: h = ((g - b) / d + (g < b ? 6 : 0)) / 6; break;
+            case g: h = ((b - r) / d + 2) / 6; break;
+            case b: h = ((r - g) / d + 4) / 6; break;
+        }
+    }
+    return Math.round(h * 360);
+}
+
+function hueDistance(h1, h2) {
+    let d = Math.abs(h1 - h2);
+    return d > 180 ? 360 - d : d;
+}
+
+function getFilteredKeys() {
+    const keys = Object.keys(colorSets);
+    const searchVal = (document.getElementById('search-input')?.value || '').trim().toLowerCase();
+    let filtered = keys;
+
+    if (searchVal) {
+        const isHex = /^[0-9a-f]{3,6}$/i.test(searchVal.replace(/#/g, ''));
+        if (isHex) {
+            const hexPart = searchVal.replace(/^#/, '');
+            filtered = filtered.filter((k) =>
+                colorSets[k].some((c) => c.replace(/^#/, '').toLowerCase().includes(hexPart))
+            );
+        } else {
+            const numMatch = searchVal.match(/\d+/);
+            const num = numMatch ? numMatch[0] : '';
+            filtered = filtered.filter((k) => {
+                const idx = parseInt(k.replace(/\D/g, ''), 10);
+                return String(idx).includes(num);
+            });
+        }
+    }
+
+    if (selectedHue !== null) {
+        filtered = filtered.filter((k) =>
+            colorSets[k].some((c) => hueDistance(hexToHue(c), selectedHue) <= HUE_TOLERANCE)
+        );
+    }
+
+    return filtered;
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    const flipCheckbox = document.getElementById('flip-colors');
+    flipCheckbox.addEventListener('change', () => refreshDisplay());
+
+    const searchInput = document.getElementById('search-input');
+    const searchClear = document.getElementById('search-clear');
+    searchInput?.addEventListener('input', () => {
+        searchClear.hidden = !searchInput.value;
+        currentPage = 1;
+        refreshDisplay();
+    });
+    searchClear?.addEventListener('click', () => {
+        searchInput.value = '';
+        searchClear.hidden = true;
+        searchInput.focus();
+        currentPage = 1;
+        refreshDisplay();
+    });
+
+    const wheelToggle = document.getElementById('color-wheel-toggle');
+    const wheelPanel = document.getElementById('color-wheel-panel');
+    const wheel = document.getElementById('color-wheel');
+    const wheelCursor = document.getElementById('color-wheel-cursor');
+    const colorPreview = document.getElementById('color-preview');
+    const colorHueDisplay = document.getElementById('color-hue-display');
+    const wheelClear = document.getElementById('color-wheel-clear');
+
+    wheelToggle?.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const isOpen = !wheelPanel.hidden;
+        wheelPanel.hidden = isOpen;
+        wheelToggle.setAttribute('aria-expanded', String(!isOpen));
+    });
+
+    wheel?.addEventListener('click', (e) => {
+        const rect = wheel.getBoundingClientRect();
+        const cx = rect.left + rect.width / 2;
+        const cy = rect.top + rect.height / 2;
+        const dx = e.clientX - cx;
+        const dy = e.clientY - cy;
+        const angle = Math.atan2(dy, dx);
+        let hue = Math.round((angle * 180 / Math.PI + 90 + 360) % 360);
+        selectedHue = hue;
+        updateWheelCursor(hue);
+        colorPreview.style.backgroundColor = `hsl(${hue}, 70%, 50%)`;
+        colorHueDisplay.textContent = `${hue}\u00b0`;
+        currentPage = 1;
+        refreshDisplay();
+    });
+
+    function updateWheelCursor(hue) {
+        const angle = ((hue - 90) * Math.PI) / 180;
+        const x = 50 + 50 * Math.cos(angle);
+        const y = 50 + 50 * Math.sin(angle);
+        wheelCursor.style.left = `${x}%`;
+        wheelCursor.style.top = `${y}%`;
+    }
+
+    wheelClear?.addEventListener('click', () => {
+        selectedHue = null;
+        wheelCursor.style.left = '50%';
+        wheelCursor.style.top = '50%';
+        wheelCursor.style.transform = 'translate(-50%, -50%)';
+        colorPreview.style.backgroundColor = '';
+        colorHueDisplay.textContent = 'Pick a hue';
+        currentPage = 1;
+        refreshDisplay();
+    });
+
+    document.addEventListener('click', (e) => {
+        if (!wheelPanel.hidden && !wheelPanel.contains(e.target) && !wheelToggle.contains(e.target)) {
+            wheelPanel.hidden = true;
+            wheelToggle.setAttribute('aria-expanded', 'false');
+        }
+    });
+
+    refreshDisplay();
+});
+
+function refreshDisplay() {
+    displaySets(currentPage);
+}
 
 function displaySets(page) {
     const flipCheckbox = document.getElementById('flip-colors');
     container.innerHTML = '';
-    console.log('Displaying sets for page:', page);
-    const keys = Object.keys(colorSets);
+    const keys = getFilteredKeys();
     const start = (page - 1) * setsPerPage;
     const end = start + setsPerPage;
 
+    if (keys.length === 0) {
+        const empty = document.createElement('p');
+        empty.className = 'empty-state';
+        empty.textContent = 'No palettes match your search. Try different keywords or clear the color filter.';
+        container.appendChild(empty);
+        displayPagination(0, 1);
+        return;
+    }
 
-    keys.slice(start, end).forEach((set, index) => {
-        const setTitle = document.createElement('h2');
-        const setTitleContainer = document.createElement('div');
-        setTitleContainer.classList.add('set-title-container');
-        const firstColor = colorSets[set][0];
-        setTitle.innerHTML = `Set ${start + index + 1} <i class="far fa-clone"></i>`;
-        setTitle.style.color = firstColor;
-        setTitleContainer.appendChild(setTitle);
+    keys.slice(start, end).forEach((setKey) => {
+        const setIndex = parseInt(setKey.replace(/\D/g, ''), 10);
+        const colors = flipCheckbox.checked ? flipColors(colorSets[setKey]) : colorSets[setKey];
+        const firstColor = colors[0];
+        const lastColor = colors[colors.length - 1];
 
-        const testButton = document.createElement('button');
-        testButton.id = 'test-it';
-        const lastColor = colorSets[set][colorSets[set].length - 1];
-        testButton.innerHTML = '<i class="fas fa-vial"></i> Test It';
-        testButton.style.backgroundColor = 'transparent';
-        testButton.style.color = lastColor;
-        testButton.addEventListener('click', () => {
-            const colors = flipCheckbox.checked ? flipColors(colorSets[set]) : colorSets[set];
-            const cssVars = `
-:root {
-    --primary-color: ${colors[0]};
-    --secondary-color: ${colors[1]};
-    --tertiary-color: ${colors[2]};
-    --quaternary-color: ${colors[3]};
-    --quinary-color: ${colors[4]};
-    --senary-color: ${colors[5]};
-    --septenary-color: ${colors[6]};
-    --octonary-color: ${colors[7]};
-    --nonary-color: ${colors[8]};
-    --denary-color: ${colors[9]};
-}`;
-            copyToClipboard(cssVars);
+        const card = document.createElement('article');
+        card.className = 'set-card';
+
+        const header = document.createElement('div');
+        header.className = 'set-card__header';
+
+        const title = document.createElement('h2');
+        title.className = 'set-card__title';
+        title.style.color = firstColor;
+        title.innerHTML = `Set ${setIndex} <i class="far fa-copy" aria-hidden="true"></i>`;
+        title.setAttribute('tabindex', '0');
+        title.setAttribute('role', 'button');
+
+        const copyCss = () => {
+            copyToClipboard(getCssVars(colors));
+        };
+
+        title.addEventListener('click', copyCss);
+        title.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                copyCss();
+            }
+        });
+
+        const actions = document.createElement('div');
+        actions.className = 'set-card__actions';
+
+        const testBtn = document.createElement('button');
+        testBtn.type = 'button';
+        testBtn.className = 'btn btn--secondary';
+        testBtn.style.color = lastColor;
+        testBtn.innerHTML = '<i class="fas fa-vial" aria-hidden="true"></i> Test';
+        testBtn.addEventListener('click', () => {
+            copyToClipboard(getCssVars(colors));
             window.location.href = 'https://1999azzar.github.io/color-scheme-tester/';
         });
-        setTitle.addEventListener('click', () => {
-            const colors = flipCheckbox.checked ? flipColors(colorSets[set]) : colorSets[set];
-            const cssVars = `
-:root {
-    --primary-color: ${colors[0]};
-    --secondary-color: ${colors[1]};
-    --tertiary-color: ${colors[2]};
-    --quaternary-color: ${colors[3]};
-    --quinary-color: ${colors[4]};
-    --senary-color: ${colors[5]};
-    --septenary-color: ${colors[6]};
-    --octonary-color: ${colors[7]};
-    --nonary-color: ${colors[8]};
-    --denary-color: ${colors[9]};
-}`;
-            copyToClipboard(cssVars);
-        });
-        setTitleContainer.appendChild(testButton);
-        container.appendChild(setTitleContainer);
 
-        const setContainer = document.createElement('div');
-        setContainer.classList.add('color-set');
-        container.appendChild(setContainer);
+        header.appendChild(title);
+        header.appendChild(actions);
+        actions.appendChild(testBtn);
 
-        const colors = flipCheckbox.checked ? flipColors(colorSets[set]) : colorSets[set];
-        colors.forEach(color => {
-            const colorBox = document.createElement('div');
-            colorBox.classList.add('color-box');
-            colorBox.style.backgroundColor = color;
-            colorBox.textContent = color;
-            setContainer.appendChild(colorBox);
+        const palette = document.createElement('div');
+        palette.className = 'set-card__palette';
+
+        colors.forEach((color) => {
+            const swatch = document.createElement('div');
+            swatch.className = 'color-swatch';
+            swatch.style.backgroundColor = color;
+            swatch.style.color = textColorForBg(color);
+            swatch.textContent = color;
+            swatch.setAttribute('role', 'button');
+            swatch.setAttribute('tabindex', '0');
+            swatch.setAttribute('title', `Copy ${color}`);
+            swatch.addEventListener('click', () => copyToClipboard(color));
+            swatch.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    copyToClipboard(color);
+                }
+            });
+            palette.appendChild(swatch);
         });
+
+        card.appendChild(header);
+        card.appendChild(palette);
+        container.appendChild(card);
     });
 
     displayPagination(keys.length, page);
 }
 
-
 function displayPagination(totalSets, page) {
     paginationContainer.innerHTML = '';
     const totalPages = Math.ceil(totalSets / setsPerPage);
+    const maxVisible = 7;
 
-    for (let i = 1; i <= totalPages; i++) {
-        const button = document.createElement('button');
-        button.innerHTML = `<i class="far fa-file-lines"></i>⠀${i}`;
-        if (i === page) {
-            button.style.backgroundColor = '#555';
-        }
-        button.addEventListener('click', () => {
-            currentPage = i;
+    const btn = (label, pageNum, cls = '', ariaLabel = '') => {
+        const b = document.createElement('button');
+        b.type = 'button';
+        b.className = `pagination__btn ${cls}`.trim();
+        b.textContent = label;
+        if (ariaLabel) b.setAttribute('aria-label', ariaLabel);
+        b.addEventListener('click', () => {
+            currentPage = pageNum;
             displaySets(currentPage);
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         });
-        paginationContainer.appendChild(button);
-    }
+        return b;
+    };
+
+    const prevBtn = btn('Prev', page - 1, '', 'Previous page');
+    prevBtn.disabled = page <= 1;
+    paginationContainer.appendChild(prevBtn);
+
+    const showRange = () => {
+        if (totalPages <= maxVisible) {
+            return Array.from({ length: totalPages }, (_, i) => i + 1);
+        }
+        const half = Math.floor(maxVisible / 2);
+        let low = Math.max(1, page - half);
+        let high = Math.min(totalPages, low + maxVisible - 1);
+        if (high - low < maxVisible - 1) low = Math.max(1, high - maxVisible + 1);
+        const pages = [];
+        for (let i = low; i <= high; i++) pages.push(i);
+        return pages;
+    };
+
+    const pages = showRange();
+    let lastAdded = 0;
+    pages.forEach((p) => {
+        if (p > lastAdded + 1) {
+            const ell = document.createElement('span');
+            ell.className = 'pagination__ellipsis';
+            ell.textContent = '…';
+            ell.setAttribute('aria-hidden', 'true');
+            paginationContainer.appendChild(ell);
+        }
+        paginationContainer.appendChild(btn(String(p), p, p === page ? 'pagination__btn--active' : '', `Page ${p}`));
+        lastAdded = p;
+    });
+
+    const nextBtn = btn('Next', page + 1, '', 'Next page');
+    nextBtn.disabled = page >= totalPages;
+    paginationContainer.appendChild(nextBtn);
 }
-
-
-displaySets(currentPage);

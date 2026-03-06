@@ -1,76 +1,88 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Required meta tags -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <!-- Basic SEO Meta Tags -->
     <title>Color Sets | azzar's Collection of Color Palettes</title>
     <meta name="description" content="Explore a diverse collection of color palettes by azzar for web and graphic design. Find the perfect color combinations for your projects.">
-
-    <!-- Keywords -->
     <meta name="keywords" content="color sets, color palettes, azzar, web design, graphic design, hex codes, color combinations, UI design, open source, azzar, budiyanto, azzar budi">
-
-    <!-- Author -->
     <meta name="author" content="azzar">
-
-    <!-- Open Graph / Facebook -->
     <meta property="og:title" content="Color Sets | azzar's Collection of Color Palettes">
     <meta property="og:description" content="Explore a diverse collection of color palettes by azzar for web and graphic design. Find the perfect color combinations for your projects.">
     <meta property="og:image" content="https://1999azzar.github.io/color-set/og-image.png">
     <meta property="og:url" content="https://1999azzar.github.io/color-set/">
     <meta property="og:type" content="website">
-
-    <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Color Sets | azzar's Collection of Color Palettes">
     <meta name="twitter:description" content="Explore a diverse collection of color palettes by azzar for web and graphic design. Find the perfect color combinations for your projects.">
     <meta name="twitter:image" content="https://1999azzar.github.io/color-set/og-image.png">
     <meta name="twitter:site" content="@siapa_hayosiapa">
-
-    <!-- Google / Schema.org -->
     <meta itemprop="name" content="Color Sets | azzar's Collection of Color Palettes">
     <meta itemprop="description" content="Explore a diverse collection of color palettes by azzar for web and graphic design. Find the perfect color combinations for your projects.">
     <meta itemprop="image" content="https://1999azzar.github.io/color-set/og-image.png">
-
-    <!-- Other Meta Tags -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <!-- <meta name="robots" content="index, follow"> -->
-    <!-- <meta name="googlebot" content="index, follow"> -->
     <link rel="canonical" href="https://1999azzar.github.io/color-set/">
-
-    <!-- css -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Kalnia:wght@100..700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=Outfit:wght@500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
-
-    <!-- Favicons -->
     <link rel="icon" type="image/x-icon" href="icon.png">
-
-    <!-- Additional SEO Tags -->
-    <meta name="theme-color" content="#ffffff">
+    <meta name="theme-color" content="#e8eef0">
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="application-name" content="Color Sets">
-
-    <!-- Language / Localization -->
-    <meta name="language" content="English">
 </head>
 <body>
-    <h1><i class="fas fa-palette"></i> Color Sets</h1>
-    <div style="margin-bottom: 20px;">
-        <label for="flip-colors">Flip Colors</label>
-        <input type="checkbox" id="flip-colors">
+    <div class="app-shell">
+        <header class="header">
+            <h1 class="header__title"><i class="fas fa-palette" aria-hidden="true"></i> Color Sets</h1>
+            <div class="controls" role="group" aria-label="Display options">
+                <label class="toggle" for="flip-colors">
+                    <span class="toggle__label">Reverse gradient</span>
+                    <span class="toggle__switch" aria-hidden="true">
+                        <input type="checkbox" id="flip-colors" class="toggle__input" aria-describedby="flip-desc">
+                        <span class="toggle__track"></span>
+                    </span>
+                </label>
+                <span id="flip-desc" class="sr-only">When enabled, reverses the color order in each palette</span>
+            </div>
+        </header>
+
+        <div class="toolbar">
+            <div class="search" role="search">
+                <label for="search-input" class="sr-only">Search palettes by set number or hex</label>
+                <i class="fas fa-search search__icon" aria-hidden="true"></i>
+                <input type="search" id="search-input" class="search__input" placeholder="Set number or hex (e.g. 42, ff0000)" autocomplete="off">
+                <button type="button" id="search-clear" class="search__clear" aria-label="Clear search" hidden><i class="fas fa-times" aria-hidden="true"></i></button>
+            </div>
+            <div class="color-picker-wrap">
+                <button type="button" id="color-wheel-toggle" class="btn btn--secondary" aria-expanded="false" aria-controls="color-wheel-panel">
+                    <i class="fas fa-circle-half-stroke" aria-hidden="true"></i> Find by color
+                </button>
+                <div id="color-wheel-panel" class="color-wheel-panel" hidden>
+                    <div class="color-wheel" id="color-wheel" role="application" aria-label="Hue wheel - click to select color">
+                        <div class="color-wheel__cursor" id="color-wheel-cursor"></div>
+                    </div>
+                    <div class="color-wheel__controls">
+                        <span class="color-wheel__preview" id="color-preview"></span>
+                        <span class="color-wheel__hue" id="color-hue-display">Pick a hue</span>
+                        <button type="button" id="color-wheel-clear" class="btn btn--secondary btn--sm">Clear</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <main class="main">
+            <div id="color-sets" class="color-sets"></div>
+
+            <nav class="pagination" id="pagination" aria-label="Palette pagination"></nav>
+        </main>
+
+        <footer class="footer">
+            <a href="https://1999azzar.github.io/1999AZZAR/" class="footer__link">azzar budiyanto</a>
+        </footer>
     </div>
-    <div id="color-sets">
-    </div>
-    <div class="pagination" id="pagination"></div>
-    <script>
-        console.log('Document loaded');
-    </script>
-    <div class="footer">
-        <a href="https://1999azzar.github.io/1999AZZAR/">by azzar budiyanto</a>
-    </div>
+
+    <div id="toast" class="toast" role="status" aria-live="polite" aria-atomic="true" hidden></div>
+
     <script src="script.js"></script>
 </body>
 </html>
